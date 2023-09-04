@@ -1,0 +1,15 @@
+D:\ИСП\3rd semester\_253505_Shishov_Lab1\_253505_Shishov_Lab1\bin\Debug\net7.0\_253505_Shishov_Lab1.exe
+D:\ИСП\3rd semester\_253505_Shishov_Lab1\_253505_Shishov_Lab1\bin\Debug\net7.0\_253505_Shishov_Lab1.deps.json
+D:\ИСП\3rd semester\_253505_Shishov_Lab1\_253505_Shishov_Lab1\bin\Debug\net7.0\_253505_Shishov_Lab1.runtimeconfig.json
+D:\ИСП\3rd semester\_253505_Shishov_Lab1\_253505_Shishov_Lab1\bin\Debug\net7.0\_253505_Shishov_Lab1.dll
+D:\ИСП\3rd semester\_253505_Shishov_Lab1\_253505_Shishov_Lab1\bin\Debug\net7.0\_253505_Shishov_Lab1.pdb
+D:\ИСП\3rd semester\_253505_Shishov_Lab1\_253505_Shishov_Lab1\obj\Debug\net7.0\_253505_Shishov_Lab1.csproj.AssemblyReference.cache
+D:\ИСП\3rd semester\_253505_Shishov_Lab1\_253505_Shishov_Lab1\obj\Debug\net7.0\_253505_Shishov_Lab1.GeneratedMSBuildEditorConfig.editorconfig
+D:\ИСП\3rd semester\_253505_Shishov_Lab1\_253505_Shishov_Lab1\obj\Debug\net7.0\_253505_Shishov_Lab1.AssemblyInfoInputs.cache
+D:\ИСП\3rd semester\_253505_Shishov_Lab1\_253505_Shishov_Lab1\obj\Debug\net7.0\_253505_Shishov_Lab1.AssemblyInfo.cs
+D:\ИСП\3rd semester\_253505_Shishov_Lab1\_253505_Shishov_Lab1\obj\Debug\net7.0\_253505_Shishov_Lab1.csproj.CoreCompileInputs.cache
+D:\ИСП\3rd semester\_253505_Shishov_Lab1\_253505_Shishov_Lab1\obj\Debug\net7.0\_253505_Shishov_Lab1.dll
+D:\ИСП\3rd semester\_253505_Shishov_Lab1\_253505_Shishov_Lab1\obj\Debug\net7.0\refint\_253505_Shishov_Lab1.dll
+D:\ИСП\3rd semester\_253505_Shishov_Lab1\_253505_Shishov_Lab1\obj\Debug\net7.0\_253505_Shishov_Lab1.pdb
+D:\ИСП\3rd semester\_253505_Shishov_Lab1\_253505_Shishov_Lab1\obj\Debug\net7.0\_253505_Shishov_Lab1.genruntimeconfig.cache
+D:\ИСП\3rd semester\_253505_Shishov_Lab1\_253505_Shishov_Lab1\obj\Debug\net7.0\ref\_253505_Shishov_Lab1.dll

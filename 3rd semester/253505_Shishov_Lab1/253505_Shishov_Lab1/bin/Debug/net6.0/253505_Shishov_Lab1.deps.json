@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "253505_Shishov_Lab1/1.0.0": {
+        "runtime": {
+          "253505_Shishov_Lab1.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "253505_Shishov_Lab1/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
