@@ -54,7 +54,7 @@ namespace _253505_Shishov_Lab3.Entities
                 {
                     foreach(var item in client.ClientGoods)
                     {
-                        total += item.Price;
+                        total += item.Price * item.Amount;
                     }
                 }
             }
@@ -85,7 +85,7 @@ namespace _253505_Shishov_Lab3.Entities
                 {
                     if(item.Name == good.Name)
                     {
-                        total += item.Price;
+                        total += item.Price * item.Amount;
                     }
                 }
             }
