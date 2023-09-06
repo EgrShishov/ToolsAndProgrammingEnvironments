@@ -1,4 +1,5 @@
-﻿using _253505_Shishov_Lab1.Entities;
+﻿using _253505_Shishov_Lab1.Collections;
+using _253505_Shishov_Lab1.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace _253505_Shishov_Lab1.Contracts
 
         double ShowTotalAmount(string surname);
 
-        void RegisterOrder(string order_info, Goods[] goods);
+        void RegisterOrder(string order_info, MyCustomCollection<Goods> goods, int amount);
 
         double GetTotalAmountByGood(Goods good);
 

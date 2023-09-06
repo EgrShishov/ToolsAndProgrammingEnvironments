@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace _253505_Shishov_Lab3.Contracts
 {
-    internal interface IShop<T>
+    internal interface IShop
     {
         //standart collections
-        void AddGoods(Goods goods);
+        void AddGoods(string category, Goods goods);
 
-        string GetOrders(string surname);
+        List<Goods> GetOrders(string surname);
 
         int ShowTotalAmount(string surname);
 
-        void RegisterOrder(string order_info, Goods[] goods);
+        void RegisterOrder(Client client, Goods goods, int amount);
 
         int GetTotalAmountByGood(Goods good);
 
@@ -25,7 +25,7 @@ namespace _253505_Shishov_Lab3.Contracts
         int GetTotalGoodsAmount();
         int GetTotalOrderedGoodsAmount(string client_name);
         string GetTheRichestClientName();
-        int GetAmountOfTheReachestClieants();
+        int GetAmountOfTheReachestClients();
 
         List<int> GetTotalsByEveryGoods();
     }

@@ -9,17 +9,17 @@ using _253505_Shishov_Lab1.Entities;
         Console.WriteLine("hello, walter");
 
         Shop shop = new Shop();
-        Journal journal = new Journal("events");
+        Journal journal = new Journal();
 
         shop.NotifyGoodsChanged += journal.RegisterEvent;
         shop.NotifyClientChanged += journal.RegisterEvent;
-        shop.NotifyOrderCreated += (string order_desc) => Console.WriteLine($"new order created");
+        shop.NotifyOrderCreated += (string order_desc) => Console.WriteLine($"new order created : {order_desc}");
 
         shop.AddGoods(new Goods(123, "notebook"));
         shop.AddGoods(new Goods(456, "phone"));
         shop.AddGoods(new Goods(12, "soap"));
         shop.AddGoods(new Goods(43, "walter"));
-        shop.RegisterOrder("shishov", new[] { shop.GetGoods[0], shop.GetGoods[1], shop.GetGoods[2] });
+        shop.RegisterOrder("shishov", new MyCustomCollection<Goods>() { shop.GetGoods[0] , shop.GetGoods[1], shop.GetGoods[2] }, 4);
         Console.WriteLine(shop.GetOrders("shishov"));
         Console.WriteLine(shop.ShowTotalAmount("shishov"));
 
@@ -31,7 +31,7 @@ using _253505_Shishov_Lab1.Entities;
         shop.GetGoods.Next();
         shop.GetGoods.Next();
 
-        shop.RegisterOrder("bekarev", new[] {shop.GetGoods.Current()});
+        shop.RegisterOrder("bekarev", new MyCustomCollection<Goods>{shop.GetGoods.Current()}, 3);
         Console.WriteLine(shop.GetOrders("bekarev"));
         Console.WriteLine(shop.ShowTotalAmount("bekarev"));
 

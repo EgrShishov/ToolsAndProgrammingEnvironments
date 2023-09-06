@@ -20,11 +20,11 @@ namespace _253505_Shishov_Lab1.Entities
 
         MyCustomCollection<Goods> all_goods;
         MyCustomCollection<string> clients;
-        MyCustomCollection<(string, Goods[])> order_journal;
+        MyCustomCollection<(string, MyCustomCollection<Goods>)> order_journal;
 
         public Shop()
         {
-            order_journal = new MyCustomCollection<(string, Goods[])>();
+            order_journal = new MyCustomCollection<(string, MyCustomCollection<Goods>)>();
             clients = new MyCustomCollection<string>();
             all_goods = new MyCustomCollection<Goods>();
         }
@@ -46,20 +46,25 @@ namespace _253505_Shishov_Lab1.Entities
             clients.Add(surname);
         }
 
-        public void RegisterOrder(string order_info, Goods[] goods)
+        public void RegisterOrder(string order_info, MyCustomCollection<Goods> goods, int amount)
         {
-            NotifyOrderCreated($"{order_info}");
+            var items = "";
+            foreach(var item in goods)
+            {
+                items += item;
+            }
+            NotifyOrderCreated($"Surname : {order_info}, ordered : {items}");
             order_journal.Add((order_info, goods));
         }
 
         public double GetTotalAmountByGood(Goods good)
         {
-            var total = 0;
+            var tmp = new Goods(0, "");
             foreach (var item in all_goods)
             {
-                total += item.Price;
+                tmp = GenericMath<Goods>.Add<Goods>(tmp, item);
             }
-            return total;
+            return tmp.Price;
         }
 
         public void ShowInfo()
@@ -77,7 +82,7 @@ namespace _253505_Shishov_Lab1.Entities
             {
                 if (order_journal_item.Item1 == surname)
                 {
-                    foreach(var item in order_journal_item.Item2)
+                    foreach (var item in order_journal_item.Item2)
                     {
                         orders += item.ToString() + "\n";
                     }
