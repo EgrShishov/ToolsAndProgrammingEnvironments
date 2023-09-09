@@ -12,11 +12,11 @@ namespace _253505_Shishov_Lab1.Contracts
     {
         void AddGoods(Goods goods);
 
-        string GetOrders(string surname);
+        string GetOrders(Client client);
 
-        double ShowTotalAmount(string surname);
+        double ShowTotalAmount(Client client);
 
-        void RegisterOrder(string order_info, MyCustomCollection<Goods> goods, int amount);
+        void RegisterOrder(Client client, MyCustomCollection<Goods> goods, int amount);
 
         double GetTotalAmountByGood(Goods good);
 

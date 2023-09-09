@@ -25,8 +25,8 @@ namespace _253505_Shishov_Lab3.Contracts
         int GetTotalGoodsAmount();
         int GetTotalOrderedGoodsAmount(string client_name);
         string GetTheRichestClientName();
-        int GetAmountOfTheReachestClients();
+        public int GetClientsWhoPaidMoreThenSum(int sum);
 
-        List<int> GetTotalsByEveryGoods();
+        void GetTotalsByEveryGoods(string surname);
     }
 }

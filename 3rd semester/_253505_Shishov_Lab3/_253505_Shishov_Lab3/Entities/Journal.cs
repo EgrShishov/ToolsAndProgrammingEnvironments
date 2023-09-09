@@ -1,29 +1,25 @@
-﻿using _253505_Shishov_Lab1.Collections;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _253505_Shishov_Lab1.Entities
+namespace _253505_Shishov_Lab3.Entities
 {
     internal class Journal
     {
-        MyCustomCollection<string> events;
+        List<string> events;
         string name;
 
-        public Journal(string name)
-        {
-            events = new MyCustomCollection<string>();
-            this.name=name;
-        }
+        public Journal(string name) { events = new List<string>(); this.name = name; }
         public void ShowEvents()
         {
+            Console.WriteLine("------------------------");
             foreach (var e in events)
             {
                 Console.WriteLine($"{e}");
             }
-            Console.WriteLine("----------------");
+            Console.WriteLine("------------------------");
         }
 
         public void RegisterEvent(string desc)

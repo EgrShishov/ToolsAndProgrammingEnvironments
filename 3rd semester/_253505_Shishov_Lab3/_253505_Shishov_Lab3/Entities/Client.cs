@@ -28,5 +28,10 @@ namespace _253505_Shishov_Lab3.Entities
             get { return client_name; }
             set { client_name = value; }
         }
+
+        public override string ToString()
+        {
+            return $" name - {client_name}";
+        }
     }
 }

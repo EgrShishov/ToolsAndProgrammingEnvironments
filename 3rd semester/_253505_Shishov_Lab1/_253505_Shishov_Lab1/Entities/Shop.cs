@@ -19,13 +19,11 @@ namespace _253505_Shishov_Lab1.Entities
         public event ClientHandler NotifyClientChanged;
 
         MyCustomCollection<Goods> all_goods;
-        MyCustomCollection<string> clients;
-        MyCustomCollection<(string, MyCustomCollection<Goods>)> order_journal;
+        MyCustomCollection<Client> clients;
 
         public Shop()
         {
-            order_journal = new MyCustomCollection<(string, MyCustomCollection<Goods>)>();
-            clients = new MyCustomCollection<string>();
+            clients = new MyCustomCollection<Client>();
             all_goods = new MyCustomCollection<Goods>();
         }
 
@@ -36,25 +34,25 @@ namespace _253505_Shishov_Lab1.Entities
 
         public void AddGoods(Goods goods)
         {
-            NotifyGoodsChanged($"list of goods changed. added {goods}");
+            NotifyGoodsChanged?.Invoke($"Goods : list of goods changed. added {goods}");
             all_goods.Add(goods);
         }
 
-        public void RegisterClient(string surname)
+        public void RegisterClient(Client client)
         {
-            NotifyClientChanged($"list of client changed. added {surname}");
-            clients.Add(surname);
+            NotifyClientChanged?.Invoke($"clients : list of client changed. added {client.Name}");
+            clients.Add(client);
         }
 
-        public void RegisterOrder(string order_info, MyCustomCollection<Goods> goods, int amount)
+        public void RegisterOrder(Client client, MyCustomCollection<Goods> goods, int amount)
         {
             var items = "";
             foreach(var item in goods)
             {
                 items += item;
             }
-            NotifyOrderCreated($"Surname : {order_info}, ordered : {items}");
-            order_journal.Add((order_info, goods));
+            NotifyOrderCreated?.Invoke($"Shop : Surname : {client.Name}, ordered : {items}");
+            client.Order_journal.Add(goods);
         }
 
         public double GetTotalAmountByGood(Goods good)
@@ -69,38 +67,48 @@ namespace _253505_Shishov_Lab1.Entities
 
         public void ShowInfo()
         {
-           foreach (var item in order_journal) 
+           foreach (var item in clients) 
             {
-                Console.WriteLine(item);
+                Console.WriteLine(item.Name);
+                foreach(var el in item.Order_journal)
+                {
+                    Console.WriteLine(el);
+                }
             }
         }
 
-        public string GetOrders(string surname)
+        public string GetOrders(Client client)
         {
             string orders = "";
-            foreach(var order_journal_item in order_journal)
+            foreach(var cur_client in clients)
             {
-                if (order_journal_item.Item1 == surname)
+                if (cur_client.Name == client.Name)
                 {
-                    foreach (var item in order_journal_item.Item2)
+                    foreach (var item in cur_client.Order_journal)
                     {
-                        orders += item.ToString() + "\n";
+                        foreach (var el in item)
+                        {
+                            orders += item.ToString() + "\n";
+                        }
                     }
                 }
             }
             return orders;
         }
 
-        public double ShowTotalAmount(string surname)
+        public double ShowTotalAmount(Client client)
         {
             var total = 0;
-            foreach(var order_journal_item in order_journal)
+            foreach(var cur_client in clients)
             {
-                if (order_journal_item.Item1 == surname)
+                if (cur_client.Name == client.Name)
                 {
-                    foreach (var item in order_journal_item.Item2)
+                    foreach (var item in cur_client.Order_journal)
                     {
-                        total += item.Price;
+                        foreach(var el in item)
+                        {
+                            total += el.Price;
+                        }
                     }
                 }
             }
