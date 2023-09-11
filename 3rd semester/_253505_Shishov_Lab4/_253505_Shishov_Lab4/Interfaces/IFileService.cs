@@ -11,5 +11,6 @@ namespace _253505_Shishov_Lab4.Interfaces
         IEnumerable<T> ReadFile(string fileName);
         void SaveData(IEnumerable<T> data, string fileName);
 
+        void RenameFile(string oldFileName, string newFileName);
     }
 }

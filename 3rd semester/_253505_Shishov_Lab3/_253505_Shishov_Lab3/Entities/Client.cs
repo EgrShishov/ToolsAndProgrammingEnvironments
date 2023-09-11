@@ -8,19 +8,19 @@ namespace _253505_Shishov_Lab3.Entities
 {
     internal class Client
     {
-        List<Goods> client_goods;
+        List<Order> client_orders;
         string client_name;
 
         public Client(string name)
         { 
             client_name = name;
-            client_goods = new List<Goods>();
+            client_orders = new List<Order>();
         }
 
-        public List<Goods> ClientGoods
+        public List<Order> ClientOrders
         {
-            get { return client_goods; }
-            set { client_goods = value; }
+            get { return client_orders; }
+            set { client_orders = value; }
         }
 
         public string ClientName

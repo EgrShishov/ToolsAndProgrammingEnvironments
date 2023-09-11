@@ -12,10 +12,23 @@ shop.AddGoods("spoon", new Goods("chair", 43));
 shop.AddGoods("knife", new Goods("notebook", 2134));
 shop.AddGoods("spoon", new Goods("spoon", 43));
 
-shop.RegisterOrder(new Client("Shishov"), new Goods("soap", 100) , 132);
-shop.RegisterOrder(new Client("Bekarev"),  new Goods("chair", 43), 43);
-shop.RegisterOrder(new Client("Krasev"), new Goods("notebook", 2134), 4);
-shop.RegisterOrder(new Client("Sergeev"), new Goods("spoon", 43), 4000);
+var Shishov = new Client("Shishov");
+var Bekarev = new Client("Bekarev");
+var Krasev = new Client("Krasev");
+var Sergeev = new Client("Sergeev");
+
+shop.RegisterOrder(Shishov, new List<Goods> { new Goods("soap", 100, 132) , new Goods("pillow", 99, 3)});
+shop.RegisterOrder(Shishov, new List<Goods> { new Goods("nails", 23, 2) });
+shop.RegisterOrder(Bekarev,  new List<Goods> { new Goods("chair", 43, 43) });
+shop.RegisterOrder(Krasev, new List<Goods>{new Goods("notebook", 2134, 4)});
+shop.RegisterOrder(Sergeev, new List<Goods> { new Goods("spoon", 43, 4000) });
+
+
+Console.WriteLine("Get orders");
+foreach(var order in shop.GetOrders("Shishov"))
+{
+    Console.WriteLine(order);
+}
 
 Console.WriteLine("------------------------");
 Console.WriteLine($"Total amount for user Shishov : {shop.ShowTotalAmount("Shishov")}");

@@ -11,13 +11,9 @@ namespace _253505_Shishov_Lab3.Contracts
     {
         //standart collections
         void AddGoods(string category, Goods goods);
-
-        List<Goods> GetOrders(string surname);
-
+        List<Order> GetOrders(string surname);
         int ShowTotalAmount(string surname);
-
-        void RegisterOrder(Client client, Goods goods, int amount);
-
+        void RegisterOrder(Client client, List<Goods> goods);
         int GetTotalAmountByGood(Goods good);
 
         //LINQ only

@@ -14,12 +14,14 @@ namespace _253505_Shishov_Lab3.Entities
         public Journal(string name) { events = new List<string>(); this.name = name; }
         public void ShowEvents()
         {
-            Console.WriteLine("------------------------");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n------------------------");
             foreach (var e in events)
             {
                 Console.WriteLine($"{e}");
             }
             Console.WriteLine("------------------------");
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         public void RegisterEvent(string desc)

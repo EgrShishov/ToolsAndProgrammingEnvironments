@@ -41,16 +41,16 @@ namespace _253505_Shishov_Lab3.Entities
             }
         }
 
-        public List<Goods> GetOrders(string surname)
+        public List<Order> GetOrders(string surname)
         {
             foreach(var client in clients)
             {
                 if(client.ClientName == surname)
                 {
-                    return client.ClientGoods;
+                    return client.ClientOrders;
                 }
             }
-            return new List<Goods>();
+            return new List<Order>();
         }
 
         public int ShowTotalAmount(string surname)
@@ -60,23 +60,22 @@ namespace _253505_Shishov_Lab3.Entities
             {
                 if(client.ClientName == surname)
                 {
-                    foreach(var item in client.ClientGoods)
+                    foreach(var order in client.ClientOrders)
                     {
-                        total += item.Price * item.Amount;
+                        foreach (var item in order.Goods)
+                        {
+                            total += item.Price * item.Amount;
+                        }
                     }
                 }
             }
             return total;
         }
 
-        public void RegisterOrder(Client client, Goods goods, int amount)
+        public void RegisterOrder(Client client, List<Goods> goods)
         {
-            if (amount > 1)
-            {
-                goods.Amount = amount;
-            }
-
-            client.ClientGoods.Add(goods);
+            var order = new Order(goods);
+            client.ClientOrders.Add(order);
             NotifyClientListChanged?.Invoke($"Shop -> client {client} was added");
 
             if (!clients.Contains(client))
@@ -91,11 +90,14 @@ namespace _253505_Shishov_Lab3.Entities
             var total = 0;
             foreach(var client in clients)
             {
-                foreach(var item in client.ClientGoods)
+                foreach(var order in client.ClientOrders)
                 {
-                    if(item.Name == good.Name)
+                    foreach (var item in order.Goods)
                     {
-                        total += item.Price * item.Amount;
+                        if (item.Name == good.Name)
+                        {
+                            total += item.Price * item.Amount;
+                        }
                     }
                 }
             }
@@ -118,14 +120,16 @@ namespace _253505_Shishov_Lab3.Entities
         {
             return(
                 from client in clients
-                from goods in client.ClientGoods
+                from order in client.ClientOrders
+                from goods in order.Goods
                 select goods.Price * goods.Amount).Sum();
         }
         public int GetTotalOrderedGoodsAmount(string client_name)
         {
             return(
                 from client in clients
-                from goods in client.ClientGoods
+                from order in client.ClientOrders
+                from goods in order.Goods
                 where client.ClientName == client_name
                 select goods.Price * goods.Amount).Sum();
         }
@@ -133,7 +137,8 @@ namespace _253505_Shishov_Lab3.Entities
         {
             return (string)(
                 from client in clients
-                orderby client.ClientGoods.Sum(x => x.Price * x.Amount) descending
+                from order in client.ClientOrders
+                orderby order.Goods.Sum(x => x.Price * x.Amount) descending
                 select client.ClientName
                 ).First();
         }
@@ -141,25 +146,31 @@ namespace _253505_Shishov_Lab3.Entities
         {
             return (
                from client in clients
-               let tmp = client.ClientGoods.Aggregate((x, y) => x + y)
-               where tmp.Price * tmp.Amount > sum
+               let tmp = client.ClientOrders
+               from order in tmp 
+               let mama = order.Goods.Aggregate((x, y) => x + y)
+               where mama.Price * mama.Amount > sum
                select client.ClientName
                ).Count();
         }
 
         public void GetTotalsByEveryGoods(string surname)
         {
-            var ans = (
-                from client in clients
-                where client.ClientName == surname
-                let items = client.ClientGoods
-                select client.ClientGoods.Count
-                ).ToList();
-
-            foreach ( var item in ans )
+            var client = new Client("");
+            foreach(var it in clients)
             {
-                Console.WriteLine($"{item}");
+                if(it.ClientName == surname)
+                {
+                   client = it;
+                   break;
+                }
             }
-        } //not working
+           /* var allClientOrders = client.ClientOrders.Select(x => x.Goods);
+            var allClientGoods = allClientOrders.Select((x,y) =>).Aggregate((x, y) => x + y);
+            var total = allClientGoods.GroupBy(x => x.Name).ToList();
+            foreach(var it in total)
+            {
+            }*/
+        }
     }
 }

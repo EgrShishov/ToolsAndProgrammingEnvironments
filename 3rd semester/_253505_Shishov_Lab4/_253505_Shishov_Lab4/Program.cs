@@ -19,6 +19,9 @@ var extensions = new[] { ".txt", ".rtf", ".dat", ".inf" };
 
 //заполнение текущей директории файлами
 string curDirectory = Directory.GetCurrentDirectory();
+var it = Directory.GetParent(curDirectory).Parent.Parent;
+curDirectory = it.FullName;
+Console.WriteLine(curDirectory);
 string pathToFolder = $"{curDirectory}/Shishov_Lab4";
 Console.WriteLine(curDirectory);
 if(!Directory.Exists(pathToFolder))
@@ -55,24 +58,32 @@ var func = (string oldPath, string newPath) =>
 //Сохраним коллекцию в файл, прочитаем в пустую и отсортируем с помощью LINQ запроса.
 var txtFiles = DirectoryInfo.GetFiles("*.txt");
 int randInd = rand.Next(0, txtFiles.Length - 1);
-service.SaveData(my_goods, txtFiles[randInd].FullName);
-var collection = service.ReadFile(txtFiles[randInd].FullName);
-var sortedCollectionByName = collection.OrderBy(p => p, new MyCustomComparer<Goods>()).Select(p => p.Name);
-var sortedCollectionByPrice = collection.OrderBy(p => p.Price).Select(p => p.Name +  ", " + p.Price);
+service.SaveData(my_goods, txtFiles[randInd].Name);
+service.RenameFile(txtFiles[randInd].Name, $"{curDirectory}/Shishov_Lab4/renamedFile.txt");
 
+try
+{
+    var collection = service.ReadFile(txtFiles[randInd].FullName);
+    var sortedCollectionByName = collection.OrderBy(p => p, new MyCustomComparer<Goods>()).Select(p => p.Name);
+    var sortedCollectionByPrice = collection.OrderBy(p => p.Price).Select(p => p.Name +  ", " + p.Price);
 
-Console.WriteLine("-------------------------\nBasic collection : ");
-foreach (var item in my_goods)
-{
-    Console.WriteLine(item.Name);
+    Console.WriteLine("-------------------------\nBasic collection : ");
+    foreach (var item in my_goods)
+    {
+        Console.WriteLine(item.Name);
+    }
+    Console.WriteLine("Sorted by name collection : ");
+    foreach (var item in sortedCollectionByName)
+    {
+        Console.WriteLine(item);
+    }
+    Console.WriteLine("Sorted by price collection : ");
+    foreach (var item in sortedCollectionByPrice)
+    {
+        Console.WriteLine(item);
+    }
 }
-Console.WriteLine("Sorted by name collection : ");
-foreach (var item in sortedCollectionByName)
+catch (IOException ex)
 {
-    Console.WriteLine(item);
-}
-Console.WriteLine("Sorted by price collection : ");
-foreach (var item in sortedCollectionByPrice)
-{
-    Console.WriteLine(item);
+    Console.WriteLine($"I catched BinaryReader object exception : {ex.Message}");
 }

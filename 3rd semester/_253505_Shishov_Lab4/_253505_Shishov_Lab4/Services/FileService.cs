@@ -13,26 +13,21 @@ namespace _253505_Shishov_Lab4.Services
     {
         public IEnumerable<T> ReadFile(string fileName)
         {
-                using (BinaryReader reader = new BinaryReader(File.OpenRead(fileName)))
-                {
-                    while (reader.PeekChar() > -1)
-                    {
-                        string name = reader.ReadString();
-                        int price = reader.ReadInt32();
-                        bool sold = reader.ReadBoolean();
-                        var Good = new Goods(name, price, sold);
-                        yield return Good as T;
-                    }
-                    if (reader.PeekChar() > -1)
-                    {
-                        yield break;
-                    }
-                }
-            /*catch (IOException ex)
+            using (BinaryReader reader = new BinaryReader(File.OpenRead(fileName)))
             {
-                Console.WriteLine($"I catched BinaryReader object exception : {ex.Message}");
-            }*/
-
+                while (reader.PeekChar() > -1)
+                {
+                    string name = reader.ReadString();
+                    int price = reader.ReadInt32();
+                    bool sold = reader.ReadBoolean();
+                    var Good = new Goods(name, price, sold);
+                    yield return Good as T;
+                }
+                if (reader.PeekChar() > -1)
+                {
+                    yield break;
+                }
+            }
         }
 
         public void SaveData(IEnumerable<T> data, string fileName)
@@ -59,6 +54,19 @@ namespace _253505_Shishov_Lab4.Services
             catch (IOException ex)
             {
                 Console.WriteLine($"I catched BinaryWriter object exception {ex.Message}");
+            }
+        }
+
+        public void RenameFile(string oldFileName, string newFileName)
+        {
+            if (!File.Exists(newFileName) && File.Exists(oldFileName))
+            {
+                File.Move(oldFileName, newFileName);
+                Console.WriteLine("File renamed");
+                File.Delete(oldFileName);
+            } else
+            {
+                Console.WriteLine($"FileService -> {newFileName} is already exists");
             }
         }
     }
