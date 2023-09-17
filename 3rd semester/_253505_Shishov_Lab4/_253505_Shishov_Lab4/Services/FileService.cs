@@ -23,7 +23,7 @@ namespace _253505_Shishov_Lab4.Services
                     var Good = new Goods(name, price, sold);
                     yield return Good as T;
                 }
-                if (reader.PeekChar() > -1)
+                if (reader.PeekChar() == -1)
                 {
                     yield break;
                 }
