@@ -34,7 +34,7 @@ if (Directory.GetFiles(pathToFolder).Length == 0) {
     {
         int index = rand.Next(0, 4);
         string path = $"{pathToFolder}/{Path.GetRandomFileName()}{extensions[index]}";
-        File.Create(path);
+        File.Create(path).Close();
     }
 }
 
