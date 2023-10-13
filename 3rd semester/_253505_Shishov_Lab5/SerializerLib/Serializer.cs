@@ -22,7 +22,7 @@ namespace SerializerLib
                         Name = p.Element("book")?.Attribute("name").Value,
                         PagesAmount = int.Parse(p.Element("book")?.Attribute("pages_amount").Value)
                     }
-                }).ToList();
+                });
 
             if (libs != null)
             {
@@ -90,10 +90,10 @@ namespace SerializerLib
             {
                 WriteIndented = true,
             };
-            using (FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate))
-            {
-                JsonSerializer.Serialize(fs, xxx, options);
-            }
+            using FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate);
+            
+            JsonSerializer.Serialize(fs, xxx, options);
+            
         }
 
         public void SerializeXML(IEnumerable<Library> xxx, string fileName)

@@ -15,59 +15,58 @@ namespace ClassLibrary.Service
         public event ProgressChangedHandler NotifyProgressChanged;
 
         public object? Object { get; set; }
-        public StreamService() { Object = new object(); }
+
+        private static Semaphore sem;
+        public StreamService(Semaphore semaphore)
+        {
+            sem = semaphore; 
+            Object = new object(); 
+        }
         public async Task WriteToStreamAsync(Stream stream, IEnumerable<T> data, IProgress<string> progress)
         {
             var options = new JsonSerializerOptions
             {
                 WriteIndented = true
             };
-
-            await Task.Run(() =>
+            sem.WaitOne();
+            progress?.Report(new string($"\nWritting in thread# {Thread.CurrentThread.ManagedThreadId} started\n"));
+            var amount = 0;
+            Thread.Sleep(500);
+            await stream.WriteAsync(Encoding.ASCII.GetBytes("["));
+            foreach (var item in data)
             {
-                lock (Object)
+                Thread.Sleep(10);
+                await JsonSerializer.SerializeAsync(stream, item, options);
+                if (amount != data.Count() - 1)
                 {
-                    progress?.Report(new string($"\nWritting in thread# {Thread.CurrentThread.ManagedThreadId} started\n"));
-                    var amount = 0;
-                    Thread.Sleep(500);
-                    stream.WriteAsync(Encoding.ASCII.GetBytes("["));
-                    foreach (var item in data)
-                    {
-                        Thread.Sleep(10);
-                        JsonSerializer.SerializeAsync(stream, item, options);
-                        if (amount != data.Count() - 1)
-                        {
-                            stream.WriteAsync(Encoding.ASCII.GetBytes(",\n"));
-                        }
-                        amount++;
-                        progress?.Report(new string($"Thread {Thread.CurrentThread.ManagedThreadId} : {amount * 100/data.Count()} %"));
-                    }
-                    stream.WriteAsync(Encoding.ASCII.GetBytes("]"));
-                    progress?.Report(new string($"\nWritting in thread# {Thread.CurrentThread.ManagedThreadId} finished"));
-
+                    await stream.WriteAsync(Encoding.ASCII.GetBytes(",\n"));
                 }
-            });
+
+                amount++;
+                progress?.Report(
+                    new string($"Thread {Thread.CurrentThread.ManagedThreadId} : {amount * 100 / data.Count()} %"));
+            }
+
+            await stream.WriteAsync(Encoding.ASCII.GetBytes("]"));
+            progress?.Report(new string($"\nWritting in thread# {Thread.CurrentThread.ManagedThreadId} finished"));
+            sem.Release();
         }
 
         public async Task CopyFromStreamAsync(Stream stream, string filename, IProgress<string> progress)
         {
-            await Task.Run (() =>
+            sem.WaitOne();
+            progress?.Report($"\nCopying in thread# {Thread.CurrentThread.ManagedThreadId} started");
+            if (File.Exists(filename))
             {
-                lock (Object)
-                {
-                    progress?.Report($"\nCopying in thread# {Thread.CurrentThread.ManagedThreadId} started\n");
-                    if (File.Exists(filename))
-                    {
-                        File.Delete(filename);
-                    }
-                    using (FileStream fs = new(filename, FileMode.OpenOrCreate))
-                    {
-                        stream.Position = 0;
-                        stream.CopyToAsync(fs);
-                    }
-                    progress?.Report($"\nCopying in thread# {Thread.CurrentThread.ManagedThreadId} finished");
-                }
-            });
+                File.Delete(filename);
+            }
+            stream.Position = 0;
+            using (FileStream fs = new(filename, FileMode.OpenOrCreate))
+            {
+                await stream.CopyToAsync(fs);
+            }
+            progress?.Report($"\nCopying in thread# {Thread.CurrentThread.ManagedThreadId} finished");
+            sem.Release();
         }
 
         public async Task<int> GetStatisticsAsync(string fileName, Func<T, bool> filter)

@@ -3,9 +3,10 @@ using System.Reflection;
 using System.Xml;
 
 Assembly asm = Assembly.LoadFrom("D:\\ISP\\3rd semester\\_253505_Shishov_Lab6\\_253505_Shishov_Lab6\\Debug\\net7.0\\FileServiceLibrary.dll");
+Console.WriteLine("Types from .dll");
 var types = asm.GetTypes();
 Type? FileService = asm.GetType("_253505_Shishov_Lab6.Lib.Class.FileService`1").MakeGenericType(typeof(Employee));
-ConstructorInfo? constructor = FileService?.GetConstructor(new Type[] {});
+var fs = Activator.CreateInstance(FileService);
 MethodInfo? SaveData = FileService?.GetMethod("SaveData", new Type[] {typeof(IEnumerable<Employee>), typeof(string)});
 MethodInfo? ReadFile = FileService?.GetMethod("ReadFile", new Type[] { typeof(string) });
 
@@ -23,10 +24,9 @@ col.Add(new Employee("Paul", 18, true));
 col.Add(new Employee("Rostislav", 20, false));
 col.Add(new Employee("Rayan Gosling", 43, true));
 
-object? fs = constructor?.Invoke(new object[] { });
-SaveData?.Invoke(fs, new object[2]{ col, "test.json" }); 
-var jsonCol = ReadFile?.Invoke(fs, new object[1] { "test.json" });
-foreach(var item in (IEnumerable<Employee>)jsonCol)
+SaveData?.Invoke(fs, new object[]{ col, "test.json" }); 
+var jsonCol = ReadFile?.Invoke(fs, new object[] { "test.json" }) as IEnumerable<Employee>;
+foreach(var item in jsonCol)
 {
     Console.WriteLine($"{item}");
 }

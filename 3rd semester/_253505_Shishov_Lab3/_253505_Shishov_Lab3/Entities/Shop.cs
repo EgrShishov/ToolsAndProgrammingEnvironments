@@ -157,20 +157,30 @@ namespace _253505_Shishov_Lab3.Entities
         public void GetTotalsByEveryGoods(string surname)
         {
             var client = new Client("");
+            var goods_list = new List<Goods>();
+            var i = 0;
             foreach(var it in clients)
             {
                 if(it.ClientName == surname)
                 {
                    client = it;
+                   foreach (var item in it.ClientOrders)
+                   {
+                        foreach(var goods in item.Goods)
+                        {
+                            goods_list.Add(goods);
+                            i++;
+                        }
+                   }
                    break;
                 }
             }
-           /* var allClientOrders = client.ClientOrders.Select(x => x.Goods);
-            var allClientGoods = allClientOrders.Select((x,y) =>).Aggregate((x, y) => x + y);
-            var total = allClientGoods.GroupBy(x => x.Name).ToList();
-            foreach(var it in total)
-            {
-            }*/
+            List<(string, int)> totals = new();
+            var ans = goods_list
+                .GroupBy(x => x.Price)
+                .First()
+                .Sum(x => x.Price * x.Amount);
+            Console.WriteLine(ans);
         }
     }
 }

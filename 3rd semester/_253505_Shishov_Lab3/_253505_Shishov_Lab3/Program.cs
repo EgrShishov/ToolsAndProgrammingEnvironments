@@ -7,10 +7,10 @@ shop.NotifyNewOrderCreated += (string desc) => Console.WriteLine($"Shop -> New O
 shop.NotifyGoodsListChanged += journal.RegisterEvent;
 shop.NotifyClientListChanged += journal.RegisterEvent;
 
-shop.AddGoods("knife", new Goods("soap", 100));
-shop.AddGoods("spoon", new Goods("chair", 43));
-shop.AddGoods("knife", new Goods("notebook", 2134));
-shop.AddGoods("spoon", new Goods("spoon", 43));
+shop.AddGoods("bath&shower", new Goods("soap", 100));
+shop.AddGoods("woodenGoods", new Goods("chair", 43));
+shop.AddGoods("tech", new Goods("notebook", 2134));
+shop.AddGoods("kitchen", new Goods("spoon", 43));
 
 var Shishov = new Client("Shishov");
 var Bekarev = new Client("Bekarev");
@@ -18,6 +18,7 @@ var Krasev = new Client("Krasev");
 var Sergeev = new Client("Sergeev");
 
 shop.RegisterOrder(Shishov, new List<Goods> { new Goods("soap", 100, 132) , new Goods("pillow", 99, 3)});
+shop.RegisterOrder(Shishov, new List<Goods> { new Goods("soap", 100, 12), new Goods("pillow", 3, 33) });
 shop.RegisterOrder(Shishov, new List<Goods> { new Goods("nails", 23, 2) });
 shop.RegisterOrder(Bekarev,  new List<Goods> { new Goods("chair", 43, 43) });
 shop.RegisterOrder(Krasev, new List<Goods>{new Goods("notebook", 2134, 4)});

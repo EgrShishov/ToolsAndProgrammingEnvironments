@@ -21,13 +21,13 @@ namespace ClassLibrary
             Stopwatch watch = new Stopwatch();
             watch.Start();
             double  ans = 0;
-            var n = Math.Pow(10,-4); //-8
+            var n = Math.Pow(10,-4);
             var percentage = 0;
 
             for (double i = 0; i <= 1 ; i += n)
             {
                 ans += Math.Sin(i) * n;
-                for (var j = 0; j < 100000; j++) //для замедления вычислений
+                for (var j = 0; j < 1000; j++) //для замедления вычислений
                 {
                     var garbage = i + j;
                 }
