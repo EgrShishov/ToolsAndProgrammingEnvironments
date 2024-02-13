@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyMauiApp.ProgressBarPage"
+             Title="Progress Bar">
+    
+    <VerticalStackLayout Spacing="5">
+        
+        <Label 
+            x:Name="TopLabel"
+            Text="Super-duper программа для вычисления синуса методом прямоугольников"
+            FontSize="20"
+            FontAttributes="Italic,Bold" 
+            Margin="5"
+            HorizontalOptions="Center"
+            />
+        
+        <StackLayout Padding="20" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
+            <Label x:Name="ProgressBarLabel" Text="Нажмите Start, чтобы начать"/>
+            <ProgressBar x:Name="progressBar" ProgressColor="SeaGreen" Progress="0"/>
+        </StackLayout>
+        
+        <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+            <Button
+                x:Name="StartButton"
+                Clicked="StartCalculation"
+                Pressed="ButtonPressed"
+                Released="ButtonRealesed"
+                Text="Start"
+                FontSize="20"
+                BackgroundColor="SeaGreen"
+                Margin="1"/>
+            
+            <Button
+                x:Name="CancelButton"
+                Clicked="CancelCalculation"
+                Pressed="ButtonPressed"
+                Released="ButtonRealesed"
+                IsEnabled="False"
+                Text="Cancel"
+                FontSize="20"
+                BackgroundColor="SeaGreen"
+                Margin="1"/>
+        </HorizontalStackLayout>
+        
+    </VerticalStackLayout>
+    
+</ContentPage>
