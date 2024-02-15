@@ -26,17 +26,23 @@ build_metadata.AdditionalFiles.ManifestResourceName = MyMauiApp.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
+[D:/ISP/4th semester/MyMauiApp/MyMauiApp/Pages/BookPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyMauiApp.Pages.BookPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\BookPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\BookPage.xaml
+
 [D:/ISP/4th semester/MyMauiApp/MyMauiApp/Pages/CalculatorPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MyMauiApp.Pages.CalculatorPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Pages\CalculatorPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\CalculatorPage.xaml
 
-[D:/ISP/4th semester/MyMauiApp/MyMauiApp/Pages/DatabasePage.xaml]
+[D:/ISP/4th semester/MyMauiApp/MyMauiApp/Pages/CurrencyConverterPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = MyMauiApp.Pages.DatabasePage.xaml
-build_metadata.AdditionalFiles.TargetPath = Pages\DatabasePage.xaml
-build_metadata.AdditionalFiles.RelativePath = Pages\DatabasePage.xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyMauiApp.Pages.CurrencyConverterPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\CurrencyConverterPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\CurrencyConverterPage.xaml
 
 [D:/ISP/4th semester/MyMauiApp/MyMauiApp/Pages/ProgressBarPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml

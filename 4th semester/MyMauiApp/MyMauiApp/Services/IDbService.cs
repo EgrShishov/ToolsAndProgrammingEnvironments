@@ -4,8 +4,8 @@ namespace MyMauiApp.Services
 {
     public interface IDbService
     {
-        /*IEnumerable<Book> GetAllBooks();
-        IEnumerable<Author> GetBookAuthor(int Id);
-        void Init();*/
+        IEnumerable<Author> GetAllAuthors();
+        IEnumerable<Book> GetBooksByAuthor(int Id);
+        void Init();
     }
 }

@@ -1,15 +1,27 @@
 
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
 namespace MyMauiApp;
 
-public partial class ProgressBarPage : ContentPage
+public partial class ProgressBarPage : ContentPage, INotifyPropertyChanged
 {
 	public ProgressBarPage()
 	{
 		InitializeComponent();
+		BindingContext=this;
 	}
 
 	static CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 	CancellationToken cancellationToken = cancellationTokenSource.Token;
+
+    public event PropertyChangedEventHandler PropertyChanged;
+    public void OnPropertyChanged([CallerMemberName] string prop = "")
+    {
+        if (PropertyChanged != null)
+            PropertyChanged(this, new PropertyChangedEventArgs(prop));
+    }
+    public double Progress { get; set; }
 	private void ButtonPressed(object sender, EventArgs e)
 	{
 		((Button)sender).BackgroundColor = Microsoft.Maui.Graphics.Color.FromRgba("#4f6354");
@@ -47,15 +59,23 @@ public partial class ProgressBarPage : ContentPage
 	{
         var result = 0.0;
         TopLabel.Text = "Вычисление";
-        var h = 1E-3;
+        var h = 1E-4;
         var a = 0.0; var b = 1.0;
 		for (double i = a; i < b; i += h)
 		{
-			if (cancellationToken.IsCancellationRequested) return;
+			if (cancellationToken.IsCancellationRequested) 
+			{
+				cancellationTokenSource.Dispose();
+				return;
+			}
 			result += Math.Sin(i) * h;
 			await progressBar.ProgressTo(i, 1, Easing.Linear);
-			ProgressBarLabel.Text = $"Состояние процесса: {Math.Round(i*100, 2)}%";
+			Progress =  Math.Round(i*100, 2);
+			OnPropertyChanged("Progress");
+
+            //ProgressBarLabel.Text = $"Состояние процесса: {Math.Round(i*100, 2)}%";
 		}
+
         TopLabel.Text = $"Процесс завершён с результатом : {result}";
         StartButton.IsEnabled = true;
         CancelButton.IsEnabled = false;

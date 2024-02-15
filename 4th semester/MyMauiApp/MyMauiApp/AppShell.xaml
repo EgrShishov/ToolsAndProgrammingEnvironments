@@ -13,4 +13,7 @@
     <FlyoutItem Title="Progress Bar">
         <ShellContent Title="Progress Bar" ContentTemplate="{DataTemplate local:ProgressBarPage}"/>
     </FlyoutItem>
+    <FlyoutItem Title="Books and Authors">
+        <ShellContent Title="Books and Authors" ContentTemplate="{DataTemplate local:BookPage}"/>
+    </FlyoutItem>
 </Shell>

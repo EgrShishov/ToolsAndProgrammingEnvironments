@@ -54,10 +54,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\BookPage.xaml.cs">
+	    <DependentUpon>BookPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Pages\CalculatorPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\DatabasePage.xaml">
+	  <MauiXaml Update="Pages\BookPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\CurrencyConverterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\ProgressBarPage.xaml">
