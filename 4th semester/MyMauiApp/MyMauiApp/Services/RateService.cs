@@ -1,5 +1,6 @@
 ﻿
 using MyMauiApp.Entities;
+using System.Net.Http.Json;
 
 namespace MyMauiApp.Services
 {
@@ -12,7 +13,15 @@ namespace MyMauiApp.Services
         }
         public IEnumerable<Rate> GetRates(DateTime date)
         {
-            throw new NotImplementedException();
+            var rates = new List<Rate>();
+            var response = Task.Run(async () => await httpClient.GetFromJsonAsync<List<Rate>>(new Uri(httpClient.BaseAddress,$"?ondate={date.ToString("yyyy-MM-dd")}&periodicity=0"))).GetAwaiter();
+            
+            var data = response.GetResult();
+            foreach (var rate in data)
+            {
+                rates.Add(rate);
+            }
+            return rates;
         }
     }
 }

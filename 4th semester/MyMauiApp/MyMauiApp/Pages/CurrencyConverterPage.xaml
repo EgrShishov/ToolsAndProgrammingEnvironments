@@ -1,10 +1,39 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MyMauiApp.Pages.CurrencyConverterPage"
+             x:Class="MyMauiApp.CurrencyConverterPage"
+             Loaded="OnPageLoaded"
              Title="Currency Converter">
-    
-    <Grid RowDefinitions="Auto, Auto, Auto, Auto" ColumnDefinitions="Auto, Auto, Auto" RowSpacing="5" ColumnSpacing="5">
-        
+
+    <Grid RowDefinitions="3*, *, *, *" ColumnDefinitions="*, *, *" RowSpacing="5" ColumnSpacing="5" Margin="20">
+        <Frame BorderColor="SeaGreen" CornerRadius="10" Padding="5" Grid.Row="0" Grid.RowSpan="4">
+            <Grid>
+                <StackLayout HorizontalOptions="Center" Margin="5">
+                    <Label x:Name="Label" Text="Выберите дату"/>
+                    <DatePicker x:Name="datePicker" Format="yyyy-MM-dd" DateSelected="OnDateSelected"/>
+                </StackLayout>
+                <ListView ItemsSource="{Binding currencyList}" x:Name="Currency" VerticalOptions="Center" HorizontalOptions="Center">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Grid RowDefinitions="*" ColumnDefinitions="*,*,*" RowSpacing="5" ColumnSpacing="5" Margin="2">
+                                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding Cur_Abbreviation }" HorizontalOptions="Center"/>
+                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Cur_Scale }" HorizontalOptions="Center"/>
+                                        <Label Grid.Row="0" Grid.Column="2" Text="{Binding Cur_OfficialRate }" HorizontalOptions="Center"/>
+                                    </Grid>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Frame>
+        <Grid RowDefinitions="*" ColumnDefinitions="*" Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="3">
+            <HorizontalStackLayout>
+                <Entry x:Name="EnterTransfer"/>
+                <Entry x:Name="OutputTransfer"/>
+            </HorizontalStackLayout>
+        </Grid>
     </Grid>
 </ContentPage>

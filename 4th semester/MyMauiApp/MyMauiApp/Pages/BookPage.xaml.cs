@@ -7,11 +7,12 @@ using MyMauiApp.Services;
 public partial class BookPage : ContentPage
 {
 	private IDbService dbService;
-	public BookPage()
+	public BookPage(IDbService service)
 	{
 		InitializeComponent();
 
-		dbService = new SQLiteService();
+		dbService = service;
+		BindingContext = this;
     }
 
 	private void OnPageLoaded(object sender, EventArgs e)

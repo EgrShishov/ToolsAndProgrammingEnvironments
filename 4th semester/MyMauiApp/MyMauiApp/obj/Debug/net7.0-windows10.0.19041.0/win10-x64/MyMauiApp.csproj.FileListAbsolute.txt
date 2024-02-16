@@ -333,3 +333,4 @@ D:\ISP\4th semester\MyMauiApp\MyMauiApp\bin\Debug\net7.0-windows10.0.19041.0\win
 D:\ISP\4th semester\MyMauiApp\MyMauiApp\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\SQLitePCLRaw.core.dll
 D:\ISP\4th semester\MyMauiApp\MyMauiApp\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\SQLitePCLRaw.provider.dynamic_cdecl.dll
 D:\ISP\4th semester\MyMauiApp\MyMauiApp\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\e_sqlite3.dll
+D:\ISP\4th semester\MyMauiApp\MyMauiApp\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.Extensions.Http.dll

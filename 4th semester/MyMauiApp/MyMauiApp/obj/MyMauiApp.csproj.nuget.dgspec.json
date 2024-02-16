@@ -71,6 +71,10 @@
               "version": "[7.0.0, )",
               "autoReferenced": true
             },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Microsoft.Extensions.Logging": {
               "target": "Package",
               "version": "[7.0.0, )",
@@ -193,6 +197,10 @@
               "version": "[7.0.0, )",
               "autoReferenced": true
             },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Microsoft.Extensions.Logging": {
               "target": "Package",
               "version": "[7.0.0, )",
@@ -259,6 +267,10 @@
               "target": "Package",
               "version": "[7.0.0, )",
               "autoReferenced": true
+            },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             },
             "Microsoft.Extensions.Logging": {
               "target": "Package",
@@ -327,6 +339,10 @@
               "target": "Package",
               "version": "[7.0.0, )",
               "autoReferenced": true
+            },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             },
             "Microsoft.Extensions.Logging": {
               "target": "Package",

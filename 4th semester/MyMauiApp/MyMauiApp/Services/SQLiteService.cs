@@ -6,24 +6,25 @@ namespace MyMauiApp.Services
     public class SQLiteService : IDbService
     {
         private SQLiteConnection database = null;
-        public IEnumerable<Author> GetAllAuthors()
+
+        public SQLiteService()
         {
             Init();
-
+        }
+        public IEnumerable<Author> GetAllAuthors()
+        {
             return database.Table<Author>().ToList();
         }
 
         public IEnumerable<Book> GetBooksByAuthor(int authorId)
         {
-            Init();
-
             return from book in database.Table<Book>() where book.AuthorId == authorId select book;
         }
 
         public void Init()
         {
             if (database != null) return;
-            database = new SQLiteConnection("D:\\ISP\\4th semester\\MyMauiApp\\DataBase.db");
+            database = new SQLiteConnection("D:\\ISP\\4th semester\\MyMauiApp\\DataBaseTest.db");
 
             //temporary
             database.DropTable<Book>();
@@ -45,7 +46,7 @@ namespace MyMauiApp.Services
                 new Book{AuthorId = 1, Title = "Death on the Nile", Year = 1937, PagesAmount = 341, Description = "The tranquillity of a cruise along the Nile is shattered by the discovery that Linnet Ridgeway has been shot through the head. She was young, stylish and beautiful, a girl who had everything – until she lost her life.\r\nThe tranquillity of a cruise along the Nile is shattered by the discovery that Linnet Ridgeway has been shot through the head. She was young, stylish and beautiful, a girl who had everything – until she lost her life."},
                 new Book{AuthorId = 3, Title = "Billy Summers", Year = 2021, PagesAmount = 499, Description = "Billy Summers is a man in a room with a gun. He’s a killer for hire and the best in the business. But he’ll do the job only if the target is a truly bad guy. And now Billy wants out. But first there is one last hit. "},
                 new Book{AuthorId = 3, Title = "Revival", Year = 2014, PagesAmount = 341, Description = "A novel about addiction, religion, music and what might exist on the other side of life."}
-        };
+             };
 
             List<Author> authors = new List<Author>
             {

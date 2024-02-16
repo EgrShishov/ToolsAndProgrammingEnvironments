@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using MyMauiApp.Pages;
 using MyMauiApp.Services;
 
 namespace MyMauiApp;
@@ -20,6 +19,7 @@ public static class MauiProgram
 			builder.Services.AddSingleton<BookPage>();
 		builder.Services.AddTransient<IRateService, RateService>();
 			builder.Services.AddSingleton<CurrencyConverterPage>();
+		builder.Services.AddHttpClient<IRateService>(opt => opt.BaseAddress=new Uri("https://www.nbrb.by/api/exrates/rates"));
 
 #if DEBUG
 		builder.Logging.AddDebug();

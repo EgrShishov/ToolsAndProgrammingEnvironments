@@ -29,25 +29,25 @@
     <AppXManifest Include="D:\ISP\4th semester\MyMauiApp\MyMauiApp\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2024-02-15T23:11:55.316</Modified>
+      <Modified>2024-02-16T21:47:02.983</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\ISP\4th semester\MyMauiApp\MyMauiApp\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2024-02-15T23:11:54.208</Modified>
+      <Modified>2024-02-16T21:47:02.008</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\ISP\4th semester\MyMauiApp\MyMauiApp\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\MyMauiApp.runtimeconfig.json">
       <PackagePath>MyMauiApp.runtimeconfig.json</PackagePath>
-      <Modified>2024-02-13T19:50:49.376</Modified>
+      <Modified>2024-02-16T07:52:11.835</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\ISP\4th semester\MyMauiApp\MyMauiApp\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\MyMauiApp.dll">
       <PackagePath>MyMauiApp.dll</PackagePath>
-      <Modified>2024-02-15T23:11:52.345</Modified>
+      <Modified>2024-02-16T21:46:59.459</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\ISP\4th semester\MyMauiApp\MyMauiApp\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>MyMauiApp.exe</PackagePath>
-      <Modified>2024-02-15T23:11:52.465</Modified>
+      <Modified>2024-02-16T21:46:59.626</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Егор\.nuget\packages\microsoft.netcore.app.runtime.win-x64\7.0.7\runtimes\win-x64\lib\net7.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -821,6 +821,10 @@
       <PackagePath>Microsoft.Extensions.DependencyInjection.Abstractions.dll</PackagePath>
       <Modified>2022-10-18T16:15:02.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Егор\.nuget\packages\microsoft.extensions.http\7.0.0\lib\net7.0\Microsoft.Extensions.Http.dll">
+      <PackagePath>Microsoft.Extensions.Http.dll</PackagePath>
+      <Modified>2022-10-18T16:16:42.000</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Егор\.nuget\packages\microsoft.extensions.logging\7.0.0\lib\net7.0\Microsoft.Extensions.Logging.dll">
       <PackagePath>Microsoft.Extensions.Logging.dll</PackagePath>
       <Modified>2022-10-18T16:16:04.000</Modified>
@@ -943,7 +947,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\ISP\4th semester\MyMauiApp\MyMauiApp\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\MyMauiApp.deps.json">
       <PackagePath>MyMauiApp.deps.json</PackagePath>
-      <Modified>2024-02-15T23:11:55.076</Modified>
+      <Modified>2024-02-16T21:47:02.712</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files\dotnet\packs\Microsoft.Maui.Controls.Ref.win\7.0.86\ref\net7.0-windows10.0.19041\Microsoft.Maui.Controls.Compatibility.pri">
       <PackagePath>Microsoft.Maui.Controls.Compatibility.pri</PackagePath>

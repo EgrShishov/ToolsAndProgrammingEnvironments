@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "NcpXUiUqH8HAJhZchGXs53qrOxLIa5Meg/SOsh8S6lp6+umT+yjyewNas0pkbUucIY6p9PXgOMu8+Jn/0JzBSA==",
+  "dgSpecHash": "joelZ572Ti0GsIWB7uBibp66P9BkTq7t7vGT+8Iga6RBqnBKAjDYtclEfOCMyO33a/Jc78yFPOv21IADkMg6Zw==",
   "success": true,
   "projectFilePath": "D:\\ISP\\4th semester\\MyMauiApp\\MyMauiApp\\MyMauiApp.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\Егор\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\Егор\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
     "C:\\Users\\Егор\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\Егор\\.nuget\\packages\\microsoft.extensions.http\\7.0.0\\microsoft.extensions.http.7.0.0.nupkg.sha512",
     "C:\\Users\\Егор\\.nuget\\packages\\microsoft.extensions.logging\\7.0.0\\microsoft.extensions.logging.7.0.0.nupkg.sha512",
     "C:\\Users\\Егор\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\Егор\\.nuget\\packages\\microsoft.extensions.logging.debug\\7.0.0\\microsoft.extensions.logging.debug.7.0.0.nupkg.sha512",

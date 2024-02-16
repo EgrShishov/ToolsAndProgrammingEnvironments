@@ -616,6 +616,9 @@
     <AppxPackagedFile Include="C:\Users\Егор\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\7.0.0\lib\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll">
       <PackagePath>Microsoft.Extensions.DependencyInjection.Abstractions.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Егор\.nuget\packages\microsoft.extensions.http\7.0.0\lib\net7.0\Microsoft.Extensions.Http.dll">
+      <PackagePath>Microsoft.Extensions.Http.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Егор\.nuget\packages\microsoft.extensions.logging\7.0.0\lib\net7.0\Microsoft.Extensions.Logging.dll">
       <PackagePath>Microsoft.Extensions.Logging.dll</PackagePath>
     </AppxPackagedFile>

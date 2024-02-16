@@ -16,4 +16,7 @@
     <FlyoutItem Title="Books and Authors">
         <ShellContent Title="Books and Authors" ContentTemplate="{DataTemplate local:BookPage}"/>
     </FlyoutItem>
+    <FlyoutItem Title="Currency converter">
+        <ShellContent Title="Currency converter" ContentTemplate="{DataTemplate local:CurrencyConverterPage}"/>
+    </FlyoutItem>
 </Shell>
