@@ -1,1 +1,0 @@
-D:\ISP\4th semester\MyMauiApp\MyMauiApp\MyMauiApp.csproj;x64
