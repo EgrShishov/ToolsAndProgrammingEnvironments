@@ -24,7 +24,7 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout>
-                        <Frame Margin="10">
+                        <Frame Margin="10" BackgroundColor="LightSeaGreen">
                             <Grid RowDefinitions="Auto,Auto,Auto" RowSpacing="5">
                                 <Label Text="{Binding Title}" FontSize="16" FontAttributes="Bold" Grid.Row="0"/>
                                 <Label Text="{Binding Description}" FontSize="14" Grid.Row="1"/>

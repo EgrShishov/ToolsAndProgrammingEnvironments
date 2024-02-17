@@ -5,16 +5,21 @@
              Loaded="OnPageLoaded"
              Title="Currency Converter">
 
-    <Grid RowDefinitions="3*, *, *, *" ColumnDefinitions="*, *, *" RowSpacing="5" ColumnSpacing="5" Margin="20">
-        <Frame BorderColor="SeaGreen" CornerRadius="10" Padding="5" Grid.Row="0" Grid.RowSpan="4">
+    <Grid RowDefinitions="3*, *, *, *" ColumnDefinitions="*, *, *" RowSpacing="10" ColumnSpacing="10" Margin="20">
+        <Frame BorderColor="SeaGreen" CornerRadius="10" Grid.Column="0" Grid.Row="0" Grid.RowSpan="4">
             <Grid>
                 <StackLayout HorizontalOptions="Center" Margin="5">
-                    <Label x:Name="Label" Text="Выберите дату"/>
-                    <DatePicker x:Name="datePicker" Format="yyyy-MM-dd" DateSelected="OnDateSelected"/>
+                    <Label x:Name="Label" Text="Выберите дату" Margin="5"/>
+                    <DatePicker 
+                        x:Name="datePicker" 
+                        Format="yyyy-MM-dd" 
+                        DateSelected="OnDateSelected"
+                        HorizontalOptions="Center"
+                        />
                 </StackLayout>
                 <ListView ItemsSource="{Binding currencyList}" x:Name="Currency" VerticalOptions="Center" HorizontalOptions="Center">
                     <ListView.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:Name="EvenRow">
                             <ViewCell>
                                 <ViewCell.View>
                                     <Grid RowDefinitions="*" ColumnDefinitions="*,*,*" RowSpacing="5" ColumnSpacing="5" Margin="2">
@@ -29,11 +34,22 @@
                 </ListView>
             </Grid>
         </Frame>
-        <Grid RowDefinitions="*" ColumnDefinitions="*" Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="3">
-            <HorizontalStackLayout>
-                <Entry x:Name="EnterTransfer"/>
-                <Entry x:Name="OutputTransfer"/>
-            </HorizontalStackLayout>
-        </Grid>
+        <Frame BorderColor="SeaGreen" CornerRadius="10" Grid.Column="1" Grid.ColumnSpan="2">
+            <Grid ColumnDefinitions="2*,Auto,Auto,2*" RowDefinitions="*,*" ColumnSpacing="20" VerticalOptions="Center">
+                <Label Text="Конвертер валют" FontSize="30" HorizontalOptions="Center" Grid.Row="0" Grid.ColumnSpan="4" Margin="10"/>
+                <Grid Grid.Column="0" Grid.Row="1" ColumnDefinitions="3*,*" RowDefinitions="*">
+                    <Entry x:Name="EnterTransfer" Grid.Column="0" Grid.Row="0" TextChanged="OnInputEntryTextChanged"/>
+                    <Picker x:Name="EntryPicker" Grid.Column="1" Grid.Row="0" ItemsSource="{Binding Cur_Abbreviation }" SelectedIndexChanged="OnEntryIndexChanged"/>
+                </Grid>
+                <Button Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Text="⇄" BorderColor="SeaGreen" BorderWidth="1" CornerRadius="5" Clicked="OnChangeClicked"/>
+                <Grid Grid.Column="3" Grid.Row="1" ColumnDefinitions="3*,*" RowDefinitions="*">
+                    <Entry x:Name="OutputTransfer" Grid.Column="0" Grid.Row="0"/>
+                    <Picker x:Name="OutputPicker" Grid.Column="1" Grid.Row="0" ItemsSource="{Binding Cur_Abbreviation }" SelectedIndexChanged="OnOutputIndexChanged"/>
+                </Grid>
+            </Grid>
+        </Frame>
+        <Frame BorderColor="SeaGreen" CornerRadius="10" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="2">
+            <Image Source="glamazdin.png"/>
+        </Frame>
     </Grid>
 </ContentPage>
