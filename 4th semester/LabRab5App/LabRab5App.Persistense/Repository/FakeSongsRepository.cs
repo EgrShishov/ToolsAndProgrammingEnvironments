@@ -1,19 +1,19 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using LabRab5App.Persistence.Data;
+using Microsoft.EntityFrameworkCore;
+using SQLitePCL;
+using System.Diagnostics;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LabRab5App.Persistence.Repository
 {
     public class FakeSongsRepository : IRepository<Song>
     {
         List<Song> _songs;
-        public FakeSongsRepository() 
+        private readonly AppDbContext _context;
+        public FakeSongsRepository(AppDbContext context) 
         { 
             _songs = new List<Song>();
+            _context = context;
 
             //Adel
             var song = new Song("Skyfall", 12, "Pop", 2.53);
@@ -94,7 +94,7 @@ namespace LabRab5App.Persistence.Repository
             throw new NotImplementedException();
         }
 
-        public Task<Song> GetByIdAsync(int id, CancellationToken cancellationToken = default, params Expression<Func<Song, object>>[]? includesProperties)
+        public async Task<Song> GetByIdAsync(int id, CancellationToken cancellationToken = default, params Expression<Func<Song, object>>[]? includesProperties)
         {
             throw new NotImplementedException();
         }
@@ -106,21 +106,9 @@ namespace LabRab5App.Persistence.Repository
 
         public async Task<IReadOnlyList<Song>> GetListAsync(Expression<Func<Song, bool>> filter, CancellationToken cancellationToken = default, params Expression<Func<Song, object>>[]? includesProperties)
         {
-            IQueryable<Song>? query = _songs.AsQueryable();
-
-            if (filter != null)
-            {
-                query = query.Where(filter);
-            }
-
-            if (includesProperties.Any())
-            {
-                foreach(var property in includesProperties)
-                {
-                    query = query.Include(property);
-                }
-            }
-            return await query.ToListAsync();
+            var query = _songs.AsQueryable();
+            Debug.WriteLine(_songs.Count);
+            return await Task.Run(() => query.Where(filter).ToList() as IReadOnlyList<Song>);
         }
 
         public Task UpdateAsync(Song entity, CancellationToken cancellationToken = default)

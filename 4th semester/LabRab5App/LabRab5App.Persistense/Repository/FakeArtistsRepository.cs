@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using LabRab5App.Persistence.Data;
+using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LabRab5App.Persistence.Repository
 {
     public class FakeArtistsRepository : IRepository<Artist>
     {
         List<Artist> _artists;
-        public FakeArtistsRepository() 
+        private readonly AppDbContext _context;
+        public FakeArtistsRepository(AppDbContext context) 
         {
             _artists = new List<Artist>();
+            _context = context;
 
             var artist = new Artist("Michael Jackson", DateTime.Now, "USA");
             artist.Id = 1;
@@ -37,12 +36,7 @@ namespace LabRab5App.Persistence.Repository
             throw new NotImplementedException();
         }
 
-        public Task<IReadOnlyList<Artist>> GetAllValuesAsync(CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<IReadOnlyList<Artist>> GetArtistsAsync(CancellationToken cancellationToken = default)
+        public async Task<IReadOnlyList<Artist>> GetAllValuesAsync(CancellationToken cancellationToken = default)
         {
             return await Task.Run(() => _artists);
         }

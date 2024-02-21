@@ -13,6 +13,7 @@ namespace LabRab5App.Persistence.Repository
             _artistsRepository = new(() => new EfRepository<Artist>(context));
             _songsRepository = new(() => new EfRepository<Song>(context));
         }
+
         public IRepository<Song> SongsRepository => _songsRepository.Value;
 
         public IRepository<Artist> ArtistsRepository => _artistsRepository.Value;

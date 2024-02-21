@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LabRab5App.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d6395db1d9936e36380e7abe2f0a50d4f3982cfc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ac8425525dcaf260d1f1f1acd1b55ba8257a2224")]
 [assembly: System.Reflection.AssemblyProductAttribute("LabRab5App.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LabRab5App.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

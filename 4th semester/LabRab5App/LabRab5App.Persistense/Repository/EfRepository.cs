@@ -30,7 +30,7 @@ namespace LabRab5App.Persistence.Repository
 
         public async Task<IReadOnlyList<T>> GetAllValuesAsync(CancellationToken cancellationToken = default)
         {
-            return await _entities.ToListAsync(cancellationToken);
+            return await _entities.AsQueryable().ToListAsync(cancellationToken);
         }
 
         public async Task<T> GetByIdAsync(int id, CancellationToken cancellationToken = default, params Expression<Func<T, object>>[]? includesProperties)
