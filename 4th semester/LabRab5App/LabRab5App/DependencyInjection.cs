@@ -9,14 +9,18 @@ namespace LabRab5App
         public static IServiceCollection RegisterPages(this IServiceCollection services)
         {
             services.AddTransient<ArtistsPage>()
-                    .AddTransient<SongDetails>();
+                    .AddTransient<SongDetails>()
+                    .AddTransient<AddNewArtistPage>()
+                    .AddTransient<AddNewSongPage>();
             return services;
         }
 
         public static IServiceCollection RegisterViewModels(this IServiceCollection services)
         {
             services.AddTransient<ArtistsViewModel>()
-                    .AddTransient<SongDetailsViewModel>();
+                    .AddTransient<SongDetailsViewModel>()
+                    .AddTransient<AddNewArtistViewModel>()
+                    .AddTransient<AddNewSongViewModel>();
             return services;
         }
     }

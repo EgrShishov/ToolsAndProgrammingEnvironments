@@ -3,11 +3,16 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace LabRab5App.ViewModels
 {
+    [QueryProperty("Song", "Song")]
     public partial class SongDetailsViewModel : ObservableObject
     {
-        public SongDetailsViewModel() { }
+        private readonly IMediator _mediator;
+        public SongDetailsViewModel(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
 
-       /* [QueryProperty]
-        public async void GetDataFrom*/
+        [ObservableProperty]
+        Song song;
     }
 }

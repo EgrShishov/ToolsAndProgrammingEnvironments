@@ -1,5 +1,4 @@
-﻿
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LabRab5App.Application.ArtistUseCase.Queries;
 using LabRab5App.Application.SongUseCase.Queries;
@@ -50,19 +49,34 @@ namespace LabRab5App.ViewModels
             });
         }
 
-        private async Task GoToDetailsPage(Song song, CancellationToken cancellationToken = default)
+        private async Task GoToDetailsPage(Song song)
         {
             IDictionary<string, object> parametrs = new Dictionary<string, object>()
             {
-                {"Song", song}
+            {"Song", song}
             };
-            await Shell.Current.GoToAsync(nameof(SongDetails));
+            await Shell.Current.GoToAsync(nameof(SongDetails), parametrs);
         }
 
-/*        private async Task GoBackwards(CancellationToken cancellationToken = default)
+        private async Task GoToAddNewArtistPage(Artist artist)
         {
-            await Shell.Current.GoToAsync("..");
-        }*/
+            IDictionary<string, object> parametrs = new Dictionary<string, object>()
+            {
+                {"ArtistToAdd", artist}
+            };
+            await Shell.Current.GoToAsync(nameof(AddNewArtistPage), parametrs);
+        }
+
+        private async Task GoToAddNewSongPage(Song song)
+        {
+            if (selectedArtist is null) return;
+            IDictionary<string, object> parametrs = new Dictionary<string, object>()
+            {
+                {"SongToAdd", song },
+                {"Artist", selectedArtist}
+            };
+            await Shell.Current.GoToAsync(nameof(AddNewSongPage), parametrs);
+        }
 
         [RelayCommand]
         public async Task UpdateGroupList() => await SetArtists();
@@ -71,8 +85,12 @@ namespace LabRab5App.ViewModels
         public async Task UpdateMembersList() => await SetSongs();
 
         [RelayCommand]
-        public async Task ShowDetails(Song song) => await GoToDetailsPage(song);
-        //[RelayCommand]
-        //public async void GoBack() => await GoBackwards();
+        public async void ShowDetails(Song song) => await GoToDetailsPage(song);
+
+        [RelayCommand]
+        public async void AddNewArtist(Artist artist) => await GoToAddNewArtistPage(artist);
+
+        [RelayCommand]
+        public async void AddNewSong(Song song) => GoToAddNewSongPage(song);
     }
 }

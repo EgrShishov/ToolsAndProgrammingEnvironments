@@ -19,6 +19,14 @@
         <toolkit:EventToCommandBehavior EventName="Loaded"
                                         Command="{Binding UpdateGroupListCommand}"/>
     </ContentPage.Behaviors>
+
+    <ContentPage.MenuBarItems>
+        <MenuBarItem Text="Меню">
+            <MenuFlyoutItem Text="Добавить исполнителя" Command="{Binding AddNewArtistCommand }"/>
+            <MenuFlyoutItem Text="Добавить песню" Command="{Binding AddNewSongCommand}"/>
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
+
     <Grid RowDefinitions="*,*,*,*,*" ColumnDefinitions="*" RowSpacing="15" Margin="20">
         <Picker
             x:Name="artist_picker"
@@ -45,13 +53,6 @@
                 <GridItemsLayout Orientation="Vertical"
                                  VerticalItemSpacing="10"/>
             </CollectionView.ItemsLayout>
-            <CollectionView.GestureRecognizers>
-                <TapGestureRecognizer
-                    Command="{Binding Source={RelativeSource 
-                                        AncestorType={x:Type models:ArtistsViewModel}},
-                    Path=ShowDetailsCommand}"
-                    CommandParameter="{Binding}"/>
-            </CollectionView.GestureRecognizers>
             <CollectionView.Header>
                 <Frame BorderColor="CornflowerBlue" CornerRadius="5" HasShadow="True" BackgroundColor="Azure" IsVisible="{Binding SelectedArtist}">
                     <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="*,*" RowSpacing="5" Padding="10">
@@ -68,6 +69,13 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="entities:Song">
                     <Frame BorderColor="CornflowerBlue" CornerRadius="10" HasShadow="True" BackgroundColor="Azure" Margin="10, 0, 10, 10">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                        Command="{Binding Source={RelativeSource 
+                                        AncestorType={x:Type models:ArtistsViewModel} },
+                                        Path=ShowDetailsCommand}"
+                                        CommandParameter="{Binding}"/>
+                        </Frame.GestureRecognizers>
                         <Grid RowDefinitions="*,*" ColumnDefinitions="*,*,*,*" RowSpacing="10">
                             <Image Grid.Row="0" Grid.RowSpan="2" Grid.Column="0"/>
                             <Label Grid.Row="0" Grid.Column="1" Text="{Binding Title, StringFormat='Название песни: {0}'}" FontSize="18" FontAttributes="Bold"/>

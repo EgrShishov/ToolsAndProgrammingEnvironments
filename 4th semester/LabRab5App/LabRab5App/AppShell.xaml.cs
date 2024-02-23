@@ -8,6 +8,8 @@ namespace LabRab5App
         {
             InitializeComponent();
             Routing.RegisterRoute(nameof(SongDetails), typeof(SongDetails));
+            Routing.RegisterRoute(nameof(AddNewArtistPage), typeof(AddNewArtistPage));
+            Routing.RegisterRoute(nameof(AddNewSongPage), typeof(AddNewSongPage));
         }
     }
 }

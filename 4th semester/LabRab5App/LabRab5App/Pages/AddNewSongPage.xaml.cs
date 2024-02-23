@@ -2,9 +2,9 @@ using LabRab5App.ViewModels;
 
 namespace LabRab5App.Pages;
 
-public partial class SongDetails : ContentPage
+public partial class AddNewSongPage : ContentPage
 {
-	public SongDetails(SongDetailsViewModel viewModel)
+	public AddNewSongPage(AddNewSongViewModel viewModel)
 	{
 		InitializeComponent();
 
