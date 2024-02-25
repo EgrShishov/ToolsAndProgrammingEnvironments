@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using LabRab5App.Persistence.Data;
 using Microsoft.Extensions.Configuration;
 using System.Reflection;
-using LabRab5App.ValueConverters;
 
 namespace LabRab5App
 {

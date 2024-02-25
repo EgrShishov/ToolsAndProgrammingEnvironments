@@ -9,6 +9,7 @@ namespace LabRab5App.Application.SongUseCase.Commands
             var song = new Song(request.Title, request.ChartPosition, request.Genre, request.Length);
             if (request.ArtistId.HasValue) song.AddToArtist(request.ArtistId.Value);
             await unitOfWork.SongsRepository.AddAsync(song, cancellationToken);
+            await unitOfWork.SaveAllAsync();
 
             return song;
         }

@@ -12,6 +12,8 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:ChartToColorValueConverter x:Key="ChartToColor"/>
+            <converter:IsNotNull x:Key="IsNotNull"/>
+            <converter:IdToImageSourceConverter x:Key="GetImageId"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     
@@ -22,8 +24,8 @@
 
     <ContentPage.MenuBarItems>
         <MenuBarItem Text="Меню">
-            <MenuFlyoutItem Text="Добавить исполнителя" Command="{Binding AddNewArtistCommand }"/>
-            <MenuFlyoutItem Text="Добавить песню" Command="{Binding AddNewSongCommand}"/>
+            <MenuFlyoutItem Text="Добавить исполнителя" Command="{Binding AddNewArtistCommand}"/>
+            <MenuFlyoutItem Text="Добавить песню" Command="{Binding AddNewSongCommand}" IsEnabled="{Binding SelectedArtist, Converter={converter:IsNotNull}}"/>
         </MenuBarItem>
     </ContentPage.MenuBarItems>
 
@@ -35,7 +37,8 @@
             SelectedItem="{Binding SelectedArtist}"
             ItemDisplayBinding="{Binding Name}"
             Grid.Row="0"
-            MaximumHeightRequest="70">
+            MaximumHeightRequest="70"
+            Background="AliceBlue">
             <Picker.Behaviors>
                 <toolkit:EventToCommandBehavior EventName="SelectedIndexChanged"
                                                 Command="{Binding UpdateMembersListCommand}"/>
@@ -47,19 +50,19 @@
             Grid.RowSpan="4" 
             ItemsSource="{Binding Songs}" 
             VerticalScrollBarVisibility="Never"
-            IsVisible="{Binding SelectedArtist}"
+            IsVisible="{Binding SelectedArtist, Converter={StaticResource IsNotNull}}"
             Margin="10, 0, 10, 10">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical"
                                  VerticalItemSpacing="10"/>
             </CollectionView.ItemsLayout>
             <CollectionView.Header>
-                <Frame BorderColor="CornflowerBlue" CornerRadius="5" HasShadow="True" BackgroundColor="Azure" IsVisible="{Binding SelectedArtist}">
+                <Frame BorderColor="CornflowerBlue" CornerRadius="5" HasShadow="True" BackgroundColor="AliceBlue" IsVisible="{Binding SelectedArtist, Converter={StaticResource IsNotNull}}">
                     <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="*,*" RowSpacing="5" Padding="10">
-                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Информация о выбранном авторе"/>
-                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding SelectedArtist.Name}"/>
-                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding SelectedArtist.Country}"/>
-                        <Label Grid.Row="3" Grid.Column="1" Text="{Binding SelectedArtist.BirthDate, StringFormat='{0:dd.MM.yyyy}'}"/>
+                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Информация о выбранном авторе" FontSize="20" FontAttributes="Bold"/>
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding SelectedArtist.Name}" FontAttributes="Bold"/>
+                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding SelectedArtist.Country}" FontAttributes="Bold"/>
+                        <Label Grid.Row="3" Grid.Column="1" Text="{Binding SelectedArtist.BirthDate, StringFormat='{0:dd.MM.yyyy}'}" FontAttributes="Bold"/>
                         <Label Grid.Row="1" Grid.Column="0" Text="Имя автора: "/>
                         <Label Grid.Row="2" Grid.Column="0" Text="Страна: "/>
                         <Label Grid.Row="3" Grid.Column="0" Text="Дата рождения: "/>
@@ -76,12 +79,10 @@
                                         Path=ShowDetailsCommand}"
                                         CommandParameter="{Binding}"/>
                         </Frame.GestureRecognizers>
-                        <Grid RowDefinitions="*,*" ColumnDefinitions="*,*,*,*" RowSpacing="10">
-                            <Image Grid.Row="0" Grid.RowSpan="2" Grid.Column="0"/>
+                        <Grid RowDefinitions="*,*" ColumnDefinitions="*,*" ColumnSpacing="20" MaximumHeightRequest="100">
+                            <Image Source="{Binding Id, Converter={StaticResource GetImageId}}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0"/>
                             <Label Grid.Row="0" Grid.Column="1" Text="{Binding Title, StringFormat='Название песни: {0}'}" FontSize="18" FontAttributes="Bold"/>
                             <Label Grid.Row="1" Grid.Column="1" Text="{Binding Genre, StringFormat='Жанр: {0}'}" FontSize="16"/>
-                            <Label Grid.Row="1" Grid.Column="2" Text="{Binding ChartPosition, StringFormat='Позиция в чартах: {0}'}" TextColor="{Binding ChartPosition, Converter={StaticResource ChartToColor}}"/>
-                            <Label Grid.Row="1" Grid.Column="3" Text="{Binding Length, StringFormat='Продолжительность: {0} мин.'}"/>
                         </Grid>
                     </Frame>
                 </DataTemplate>

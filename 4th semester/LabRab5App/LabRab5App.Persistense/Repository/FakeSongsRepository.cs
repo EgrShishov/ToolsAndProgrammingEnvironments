@@ -9,11 +9,9 @@ namespace LabRab5App.Persistence.Repository
     public class FakeSongsRepository : IRepository<Song>
     {
         List<Song> _songs;
-        private readonly AppDbContext _context;
-        public FakeSongsRepository(AppDbContext context) 
+        public FakeSongsRepository() 
         { 
             _songs = new List<Song>();
-            _context = context;
 
             //Adel
             var song = new Song("Skyfall", 12, "Pop", 2.53);

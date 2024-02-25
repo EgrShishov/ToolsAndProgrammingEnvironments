@@ -7,11 +7,9 @@ namespace LabRab5App.Persistence.Repository
     public class FakeArtistsRepository : IRepository<Artist>
     {
         List<Artist> _artists;
-        private readonly AppDbContext _context;
-        public FakeArtistsRepository(AppDbContext context) 
+        public FakeArtistsRepository() 
         {
             _artists = new List<Artist>();
-            _context = context;
 
             var artist = new Artist("Michael Jackson", DateTime.Now, "USA");
             artist.Id = 1;

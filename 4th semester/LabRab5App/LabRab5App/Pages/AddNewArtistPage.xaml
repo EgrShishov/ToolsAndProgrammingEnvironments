@@ -9,31 +9,30 @@
              x:DataType="models:AddNewArtistViewModel"
              Title="Adding new artist">
 
-    <StackLayout>
-        <Frame>
-            <StackLayout Margin="10" Spacing="20">
-                <HorizontalStackLayout>
-                    <Label Text="Выберите фото артиста"/>
-                    <Button x:Name="addphoto_btn" Text="Добавить фото"/>
+    <Grid ColumnDefinitions="*" RowDefinitions="*">
+        <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Azure" CornerRadius="5" Grid.Row="0" Grid.Column="0">
+            <StackLayout Spacing="20" Padding="15">
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="Выберите фото обложки" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Button x:Name="addphoto_btn" Text="Добавить фото" BackgroundColor="RoyalBlue" HorizontalOptions="End"/>
                 </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Label Text="Имя артиста: "/>
-                    <Entry Text="{Binding NewArtist.Name}" x:Name="name_entry" Placeholder="Введите имя"/>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Label Text="Страна: "/>
-                    <Entry Text="{Binding NewArtist.Country}" x:Name="country_entry" Placeholder="Введите страну исполнителя"/>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Label Text="Дата рождения: "/>
-                    <Entry Text="{Binding NewArtist.BirthDate}" x:Name="birth_entry" Placeholder="Введите дату рождения"/>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Button x:Name="add_btn" Text="Добавить" Command="{Binding AddArtistCommand}"/>
-                    <Button x:Name="cancel_btn" Text="Отмена" Command="{Binding CancelCommand}"/>
+                <VerticalStackLayout>
+                    <Label Text="Имя артиста: " VerticalOptions="Center"/>
+                    <Entry Text="{Binding Name}" x:Name="name_entry" Placeholder="Введите имя" MinimumWidthRequest="150"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Label Text="Страна: " VerticalOptions="Center"/>
+                    <Entry Text="{Binding Country}" x:Name="country_entry" Placeholder="Введите страну исполнителя" MinimumWidthRequest="150"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Label Text="Дата рождения: " VerticalOptions="Center"/>
+                    <Entry Text="{Binding Birth, StringFormat='{0:dd/MM/yyyy}'}" x:Name="birth_entry" Placeholder="Введите дату рождения" MinimumWidthRequest="150"/>
+                </VerticalStackLayout>
+                <HorizontalStackLayout Spacing="20">
+                    <Button x:Name="add_btn" Text="Добавить" Command="{Binding AddArtistCommand}" MinimumWidthRequest="200" BackgroundColor="Green"/>
+                    <Button x:Name="cancel_btn" Text="Отмена" Command="{Binding CancelCommand}" MinimumWidthRequest="200" BackgroundColor="Red"/>
                 </HorizontalStackLayout>
             </StackLayout>
         </Frame>
-    </StackLayout>
-
+    </Grid>
 </ContentPage>

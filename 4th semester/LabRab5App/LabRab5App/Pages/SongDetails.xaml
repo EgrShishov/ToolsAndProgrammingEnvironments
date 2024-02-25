@@ -11,15 +11,16 @@
 
     <ContentPage.MenuBarItems>
         <MenuBarItem Text="Опции">
-            <MenuFlyoutItem Text="Изменить коллекцию"/>
-            <MenuFlyoutItem Text="Переместить"/>
-            <MenuFlyoutItem Text="Выбрать изображение"/>
+            <MenuFlyoutItem Text="Изменить коллекцию" Command="{Binding ChangeSongInfoCommand}"/>
+            <MenuFlyoutItem Text="Переместить" Command="{Binding TransferToAnotherArtistCommand}"/>
+            <MenuFlyoutItem Text="Выбрать изображение" Command="{Binding PickSongsImageCommand}"/>
         </MenuBarItem>
     </ContentPage.MenuBarItems>
     <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Margin="20">
         <Frame CornerRadius="5" BackgroundColor="LightBlue">
-            <Grid RowDefinitions="*,*,*" ColumnDefinitions="*,*,*" HorizontalOptions="Center" VerticalOptions="Center" ColumnSpacing="10" RowSpacing="5">
-                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Song.Title}" FontSize="20" FontAttributes="Bold"/>
+            <Grid RowDefinitions="*,*,*" ColumnDefinitions="*,*,*,*" HorizontalOptions="Center" VerticalOptions="Center" ColumnSpacing="10" RowSpacing="5">
+                <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" MaximumHeightRequest="200"  MaximumWidthRequest="200" Source="{Binding Song.Id, Converter={converter:IdToImageSourceConverter}}"/>
+                <Label Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding Song.Title}" FontSize="20" FontAttributes="Bold"/>
                 <Label Grid.Row="1" Grid.Column="0" Text="{Binding Song.Genre, StringFormat='Жанр: {0}'}" FontSize="14"/>
                 <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Song.ChartPosition, StringFormat='Позиция в чартах: {0}'}" FontSize="12"/>
                 <Label Grid.Row="2" Grid.Column="2"  Text="{Binding Song.Length, StringFormat='Продолжительность: {0} мин'}" FontSize="12"/>

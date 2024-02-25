@@ -34,10 +34,12 @@ namespace LabRab5App.ViewModels
                     Artists.Add(artist);
                 }
             });
+
         }
 
         public async Task SetSongs(CancellationToken cancellationToken = default)
         {
+            if (selectedArtist == null) return;
             var songs = await _mediator.Send(new GetSongsByGroupRequest(selectedArtist.Id));
             await MainThread.InvokeOnMainThreadAsync(() =>
             {
@@ -51,31 +53,30 @@ namespace LabRab5App.ViewModels
 
         private async Task GoToDetailsPage(Song song)
         {
+            if (selectedArtist == null) return;
+            Trace.WriteLine(selectedArtist.Name);
             IDictionary<string, object> parametrs = new Dictionary<string, object>()
             {
-            {"Song", song}
+                {"Song", song}
             };
             await Shell.Current.GoToAsync(nameof(SongDetails), parametrs);
         }
 
-        private async Task GoToAddNewArtistPage(Artist artist)
+        private async Task GoToAddNewArtistPage()
         {
-            IDictionary<string, object> parametrs = new Dictionary<string, object>()
-            {
-                {"ArtistToAdd", artist}
-            };
-            await Shell.Current.GoToAsync(nameof(AddNewArtistPage), parametrs);
+            await Shell.Current.GoToAsync(nameof(AddNewArtistPage));
         }
 
-        private async Task GoToAddNewSongPage(Song song)
+        private async Task GoToAddNewSongPage(Artist selectedArtist)
         {
-            if (selectedArtist is null) return;
-            IDictionary<string, object> parametrs = new Dictionary<string, object>()
+            if (selectedArtist is not null)
             {
-                {"SongToAdd", song },
-                {"Artist", selectedArtist}
+                IDictionary<string, object> parametrs = new Dictionary<string, object>()
+            {
+                {"SelectedArtist", selectedArtist}
             };
-            await Shell.Current.GoToAsync(nameof(AddNewSongPage), parametrs);
+                await Shell.Current.GoToAsync(nameof(AddNewSongPage), parametrs);
+            }
         }
 
         [RelayCommand]
@@ -85,12 +86,12 @@ namespace LabRab5App.ViewModels
         public async Task UpdateMembersList() => await SetSongs();
 
         [RelayCommand]
-        public async void ShowDetails(Song song) => await GoToDetailsPage(song);
+        public async Task ShowDetails(Song song) => await GoToDetailsPage(song);
 
         [RelayCommand]
-        public async void AddNewArtist(Artist artist) => await GoToAddNewArtistPage(artist);
+        public async Task AddNewArtist() => await GoToAddNewArtistPage();
 
         [RelayCommand]
-        public async void AddNewSong(Song song) => GoToAddNewSongPage(song);
+        public async Task AddNewSong(Artist selected_artist) => await GoToAddNewSongPage(selectedArtist);
     }
 }

@@ -8,6 +8,7 @@ namespace LabRab5App.Application.ArtistUseCase.Commands
         {
             Artist newArtist = new Artist(request.Name, request.BirthDate, request.Country);
             await unitOfWork.ArtistsRepository.AddAsync(newArtist);
+            await unitOfWork.SaveAllAsync();
 
             return newArtist;
         }

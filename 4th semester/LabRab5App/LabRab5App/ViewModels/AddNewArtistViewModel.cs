@@ -4,7 +4,10 @@ using LabRab5App.Application.ArtistUseCase.Commands;
 
 namespace LabRab5App.ViewModels
 {
-    [QueryProperty("ArtistToAdd", nameof(Artist))]
+    [QueryProperty("Name", "Name")]
+    [QueryProperty("Country", "Country")]
+    [QueryProperty("birth", "birth")]
+
     public partial class AddNewArtistViewModel: ObservableObject
     {
         private readonly IMediator _mediator;
@@ -15,11 +18,19 @@ namespace LabRab5App.ViewModels
         }
 
         [ObservableProperty]
-        Artist newArtist;
+        string name;
+
+        [ObservableProperty]
+        string country;
+
+        [ObservableProperty]
+        DateTime birth;
 
         [RelayCommand]
-        public async void AddArtist()
+        public async Task AddArtist()
         {
+            if (name is null || country is null) return;
+            await _mediator.Send(new AddArtistCommand(name, birth, country));
             await Shell.Current.GoToAsync("..");
         }
 

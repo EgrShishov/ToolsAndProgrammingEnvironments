@@ -9,30 +9,41 @@
              x:DataType="models:AddNewSongViewModel"
              Title="Adding new song">
 
-    <StackLayout>
-        <Frame>
-            <StackLayout Margin="10" Spacing="20">
-                <HorizontalStackLayout>
-                    <Label Text="Название композиции: "/>
-                    <Entry Text="{Binding NewSong.Title}" x:Name="title_entry" Placeholder="Введите название"/>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:IsNotNull x:Key="IsNotNull"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid ColumnDefinitions="*" RowDefinitions="*">
+        <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Azure" CornerRadius="5" Grid.Row="0" Grid.Column="0">
+            <StackLayout Spacing="20" Padding="15">
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="Выберите фото обложки" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Button x:Name="addphoto_btn" Text="Добавить фото" Command="{Binding PickPhotoCommand}" BackgroundColor="RoyalBlue" HorizontalOptions="End" IsEnabled="{Binding Image, Converter={StaticResource !IsNotNull}}"/>
                 </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Label Text="Позиция в чартах: "/>
-                    <Entry Text="{Binding NewSong.ChartPosition}" x:Name="chart_entry" Placeholder="Введите позицию в чарте"/>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Label Text="Жанр: "/>
-                    <Entry Text="{Binding NewSong.Genre}" x:Name="genre_entry" Placeholder="Введите жанр"/>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Label Text="Длина: "/>
-                    <Entry Text="{Binding NewSong.Length}" x:Name="len_entry" Placeholder="Введите продолжительность"/>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Button x:Name="add_btn" Text="Добавить" Command="{Binding AddSongCommand}"/>
-                    <Button x:Name="cancel_btn" Text="Отмена" Command="{Binding CancelCommand}"/>
+                <VerticalStackLayout>
+                    <Label Text="Название композиции: " VerticalOptions="Center"/>
+                    <Entry Text="{Binding Title}" x:Name="title_entry" Placeholder="Введите название" MinimumWidthRequest="150"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Label Text="Позиция в чартах: " VerticalOptions="Center"/>
+                    <Entry Text="{Binding ChartPos}" x:Name="chart_entry" Placeholder="Введите позицию в чарте" MinimumWidthRequest="150"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Label Text="Жанр: " VerticalOptions="Center"/>
+                    <Entry Text="{Binding Genre}" x:Name="genre_entry" Placeholder="Введите жанр" MinimumWidthRequest="150"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Label Text="Длина: " VerticalOptions="Center"/>
+                    <Entry Text="{Binding Length}" x:Name="len_entry" Placeholder="Введите продолжительность" MinimumWidthRequest="150"/>
+                </VerticalStackLayout>
+                <HorizontalStackLayout Spacing="20">
+                    <Button x:Name="add_btn" Text="Добавить" Command="{Binding ChangeSongCommand}" MinimumWidthRequest="200" BackgroundColor="Green"/>
+                    <Button x:Name="cancel_btn" Text="Отмена" Command="{Binding CancelCommand}" MinimumWidthRequest="200" BackgroundColor="Red"/>
                 </HorizontalStackLayout>
             </StackLayout>
         </Frame>
-    </StackLayout>
+    </Grid>
+    
 </ContentPage>
