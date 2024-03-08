@@ -8,6 +8,7 @@ using System.Diagnostics;
 
 namespace LabRab5App.ViewModels
 {
+
     public partial class ArtistsViewModel : ObservableObject
     {
         private readonly IMediator _mediator;

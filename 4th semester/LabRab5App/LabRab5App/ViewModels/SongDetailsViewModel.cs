@@ -1,43 +1,32 @@
 ﻿
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using LabRab5App.Pages;
+using LabRab5App.Models;
 
 namespace LabRab5App.ViewModels
 {
+
     [QueryProperty("Song", "Song")]
     public partial class SongDetailsViewModel : ObservableObject
     {
+
         private readonly IMediator _mediator;
-        public SongDetailsViewModel(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
+        public SongDetailsViewModel(IMediator mediator) => _mediator = mediator;
 
         [ObservableProperty]
         Song song;
 
-        public async Task<Song> ChangeSong()
+        public async Task GoToEditSongPage(Song selectedSong)
         {
-            return song;
-        }
-
-        public async Task<Song> ChangeSongsArtist()
-        {
-            return song;
-        }
-
-        public async Task PickImage()
-        {
-            return;
+                IDictionary<string, object> parametrs = new Dictionary<string, object>()
+            {
+                {"Song", selectedSong }
+            };
+                await Shell.Current.GoToAsync(nameof(EditSongPage), parametrs);
         }
 
         [RelayCommand]
-        public async Task ChangeSongInfo() => await ChangeSong();
-
-        [RelayCommand]
-        public async Task TransferToAnotherArtist() => await ChangeSongsArtist();
-
-        [RelayCommand]
-        public async Task PickSongsImage() => await PickImage();
+        public async Task ChangeSongInfo(Song selectedSong) => await GoToEditSongPage(selectedSong);
     }
 }

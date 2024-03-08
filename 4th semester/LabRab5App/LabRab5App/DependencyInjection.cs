@@ -11,7 +11,8 @@ namespace LabRab5App
             services.AddTransient<ArtistsPage>()
                     .AddTransient<SongDetails>()
                     .AddTransient<AddNewArtistPage>()
-                    .AddTransient<AddNewSongPage>();
+                    .AddTransient<AddNewSongPage>()
+                    .AddTransient<EditSongPage>();
             return services;
         }
 
@@ -20,7 +21,8 @@ namespace LabRab5App
             services.AddTransient<ArtistsViewModel>()
                     .AddTransient<SongDetailsViewModel>()
                     .AddTransient<AddNewArtistViewModel>()
-                    .AddTransient<AddNewSongViewModel>();
+                    .AddTransient<AddNewSongViewModel>()
+                    .AddTransient<ChangeSongViewModel>();
             return services;
         }
     }

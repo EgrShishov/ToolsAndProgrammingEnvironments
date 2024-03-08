@@ -39,7 +39,7 @@
                     <Entry Text="{Binding Length}" x:Name="len_entry" Placeholder="Введите продолжительность" MinimumWidthRequest="150"/>
                 </VerticalStackLayout>
                 <HorizontalStackLayout Spacing="20">
-                    <Button x:Name="add_btn" Text="Добавить" Command="{Binding ChangeSongCommand}" MinimumWidthRequest="200" BackgroundColor="Green"/>
+                    <Button x:Name="add_btn" Text="Добавить" Command="{Binding AddSongCommand}" MinimumWidthRequest="200" BackgroundColor="Green"/>
                     <Button x:Name="cancel_btn" Text="Отмена" Command="{Binding CancelCommand}" MinimumWidthRequest="200" BackgroundColor="Red"/>
                 </HorizontalStackLayout>
             </StackLayout>

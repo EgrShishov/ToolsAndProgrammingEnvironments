@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LabRab5App.Persistence")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+850a089ab55da68cdde9ccbcee46a3cedfb6e497")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a6b766a936b546a3f990a82c6fe20b25ad300d65")]
 [assembly: System.Reflection.AssemblyProductAttribute("LabRab5App.Persistence")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LabRab5App.Persistence")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

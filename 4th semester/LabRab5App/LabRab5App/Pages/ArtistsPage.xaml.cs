@@ -9,4 +9,14 @@ public partial class ArtistsPage : ContentPage
 
         BindingContext = viewModel;
     }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        foreach (var item in MenuBarItems)
+        {
+            item.BindingContext = BindingContext;
+        }
+    }
 }

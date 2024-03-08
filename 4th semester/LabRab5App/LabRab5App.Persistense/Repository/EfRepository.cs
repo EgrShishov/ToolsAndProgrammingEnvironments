@@ -1,6 +1,7 @@
 ﻿
 using LabRab5App.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 using System.Linq.Expressions;
 
 namespace LabRab5App.Persistence.Repository
@@ -75,6 +76,7 @@ namespace LabRab5App.Persistence.Repository
 
         public Task UpdateAsync(T entity, CancellationToken cancellationToken = default)
         {
+            Trace.WriteLine(entity.Id);
             _context.Entry(entity).State = EntityState.Modified;
             return Task.CompletedTask;
         }

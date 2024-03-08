@@ -5,16 +5,20 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:LabRab5App"
     xmlns:pages="clr-namespace:LabRab5App.Pages"
+    xmlns:models="clr-namespace:LabRab5App.Models"
     Title="LabRab5App">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
+
+    <FlyoutItem Title="Home" FlyoutIcon="{FontImage FontFamily=IcoFont, Color=Black, Size=16,Glyph=&#x13b41;}">
+        <ShellContent
+        ContentTemplate="{DataTemplate local:MainPage}" 
         Route="MainPage" />
-    <ShellContent
-        Title="Artists"
+    </FlyoutItem>
+    <FlyoutItem Title="Artists" FlyoutIcon="{FontImage FontFamily=fontawesome, Color=Black, Size=16, Glyph={x:Static models:Icons.User}}">
+        <ShellContent
         ContentTemplate="{DataTemplate pages:ArtistsPage}"
         Route="ArtistsPage"
         />
+    </FlyoutItem>
     
 </Shell>

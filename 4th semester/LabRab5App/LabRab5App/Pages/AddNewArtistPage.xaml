@@ -12,10 +12,6 @@
     <Grid ColumnDefinitions="*" RowDefinitions="*">
         <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Azure" CornerRadius="5" Grid.Row="0" Grid.Column="0">
             <StackLayout Spacing="20" Padding="15">
-                <HorizontalStackLayout Spacing="20">
-                    <Label Text="Выберите фото обложки" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Button x:Name="addphoto_btn" Text="Добавить фото" BackgroundColor="RoyalBlue" HorizontalOptions="End"/>
-                </HorizontalStackLayout>
                 <VerticalStackLayout>
                     <Label Text="Имя артиста: " VerticalOptions="Center"/>
                     <Entry Text="{Binding Name}" x:Name="name_entry" Placeholder="Введите имя" MinimumWidthRequest="150"/>

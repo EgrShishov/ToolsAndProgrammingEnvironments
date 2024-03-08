@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using LabRab5App.Persistence.Data;
 using Microsoft.Extensions.Configuration;
 using System.Reflection;
+using System.Diagnostics;
 
 namespace LabRab5App
 {
@@ -29,12 +30,16 @@ namespace LabRab5App
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("icofont.ttf", "IcoFont");
+                    fonts.AddFont("FontAwesome.ttf", "fontawesome");
                 });
 
             var connectrionString = builder.Configuration.GetConnectionString("SqliteConnection");
-            var dataDirectory = FileSystem.Current.AppDataDirectory + "/";
+            var dataDirectory = FileSystem.Current.AppDataDirectory;
+            dataDirectory += "\\";
             connectrionString = String.Format(connectrionString, dataDirectory);
-            var options = new DbContextOptionsBuilder<AppDbContext>().UseSqlite(connectrionString).Options;
+            Trace.WriteLine(connectrionString);
+            var options = new DbContextOptionsBuilder<AppDbContext>().EnableSensitiveDataLogging().UseSqlite(connectrionString).Options;
             
             builder.Services.AddApplication();
             builder.Services.AddPersistence(options);

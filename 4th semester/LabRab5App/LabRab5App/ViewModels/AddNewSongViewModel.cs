@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LabRab5App.Application.SongUseCase.Commands;
+using System.ComponentModel;
 
 namespace LabRab5App.ViewModels
 {
@@ -10,13 +11,11 @@ namespace LabRab5App.ViewModels
     [QueryProperty("Length", "Length")]
     [QueryProperty("ChartPos", "ChartPos")]
     [QueryProperty("Image", "Image")]
-    [QueryProperty("Action", "Action")]
+
     public partial class AddNewSongViewModel : ObservableObject
     {
         private readonly IMediator _mediator;
         public AddNewSongViewModel(IMediator mediator) => _mediator = mediator;
-
-        public Func <Song, Task<Song>> Action { get; set; }
 
         [ObservableProperty]
         FileResult image;

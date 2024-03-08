@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace LabRab5App.Domain.Entities
 {
     public class Song : Entity
@@ -18,13 +13,13 @@ namespace LabRab5App.Domain.Entities
             Genre = genre;
         }
 
-        public string Title { get; private set; }
+        public string Title { get; set; }
 
-        public int ChartPosition { get; private set;}
+        public int ChartPosition { get; set;}
 
-        public double Length { get; private set; }
+        public double Length { get; set; }
 
-        public string Genre { get; private set;}
+        public string Genre { get; set;}
 
         public int? ArtistId {  get; private set; }
 
@@ -43,6 +38,21 @@ namespace LabRab5App.Domain.Entities
         {
             if (newPosition <= 0) return;
             ChartPosition = newPosition;
+        }
+
+        public void ChangeTitle(string newTitle)
+        {
+            Title = newTitle;
+        }
+
+        public void ChangeGenre(string newGenre)
+        {
+            Genre = newGenre;
+        }
+
+        public void ChangeLength(double newLength)
+        {
+            Length = newLength;
         }
     }
 }

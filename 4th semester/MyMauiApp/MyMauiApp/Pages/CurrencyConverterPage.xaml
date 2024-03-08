@@ -59,13 +59,13 @@
                 </Grid>
                 <Button Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Text="⇄" BorderColor="SeaGreen" BorderWidth="1" CornerRadius="5" Clicked="OnChangeClicked"/>
                 <Grid Grid.Column="3" Grid.Row="1" ColumnDefinitions="3*,*" RowDefinitions="*">
-                    <Entry x:Name="OutputTransfer" Grid.Column="0" Grid.Row="0"/>
+                    <Entry x:Name="OutputTransfer" Grid.Column="0" Grid.Row="0" IsEnabled="False"/>
                     <Picker x:Name="OutputPicker" Grid.Column="1" Grid.Row="0" ItemsSource="{Binding Cur_Abbreviation }" SelectedIndexChanged="OnOutputIndexChanged"/>
                 </Grid>
             </Grid>
         </Frame>
         <Frame BorderColor="SeaGreen" CornerRadius="10" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="2">
-            <Image Source="glamazdin.png"/>
+            <Image Source="dotnet_bot.svg"/>
         </Frame>
     </Grid>
 </ContentPage>

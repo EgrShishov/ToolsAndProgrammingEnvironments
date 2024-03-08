@@ -8,7 +8,7 @@ namespace LabRab5App.ValueConverters
         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             if((Int32)value < 10) return Colors.Red;
-            return Colors.Black;
+            return Colors.CornflowerBlue;
         }
 
         public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)

@@ -29,13 +29,13 @@
     <AppXManifest Include="D:\ISP\4th semester\MyMauiApp\MyMauiApp\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2024-02-18T18:41:41.721</Modified>
+      <Modified>2024-02-27T09:50:03.888</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\ISP\4th semester\MyMauiApp\MyMauiApp\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2024-02-18T18:40:36.347</Modified>
+      <Modified>2024-02-27T09:29:22.872</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\ISP\4th semester\MyMauiApp\MyMauiApp\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\MyMauiApp.runtimeconfig.json">
       <PackagePath>MyMauiApp.runtimeconfig.json</PackagePath>
@@ -43,11 +43,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\ISP\4th semester\MyMauiApp\MyMauiApp\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\MyMauiApp.dll">
       <PackagePath>MyMauiApp.dll</PackagePath>
-      <Modified>2024-02-18T18:41:40.654</Modified>
+      <Modified>2024-02-27T09:50:02.674</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\ISP\4th semester\MyMauiApp\MyMauiApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>MyMauiApp.exe</PackagePath>
-      <Modified>2024-02-18T18:41:40.867</Modified>
+      <Modified>2024-02-27T09:50:02.921</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\ISP\4th semester\MyMauiApp\MyMauiApp\Resources\Raw\AboutAssets.txt">
       <PackagePath>AboutAssets.txt</PackagePath>
@@ -315,7 +315,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\ISP\4th semester\MyMauiApp\MyMauiApp\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\MyMauiApp.deps.json">
       <PackagePath>MyMauiApp.deps.json</PackagePath>
-      <Modified>2024-02-18T12:18:25.691</Modified>
+      <Modified>2024-02-27T09:29:22.184</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Егор\.nuget\packages\microsoft.windows.sdk.net.ref\10.0.19041.31\lib\net6.0\Microsoft.Windows.SDK.NET.dll">
       <PackagePath>Microsoft.Windows.SDK.NET.dll</PackagePath>

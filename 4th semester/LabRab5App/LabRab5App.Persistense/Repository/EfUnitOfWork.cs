@@ -4,14 +4,14 @@ namespace LabRab5App.Persistence.Repository
 {
     public class EfUnitOfWork : IUnitOfWork
     {
-        private readonly AppDbContext _context;
-        private readonly Lazy<IRepository<Artist>> _artistsRepository;
-        private readonly Lazy<IRepository<Song>> _songsRepository;
+        protected readonly AppDbContext _context;
+        protected readonly Lazy<IRepository<Artist>> _artistsRepository;
+        protected readonly Lazy<IRepository<Song>> _songsRepository;
         public EfUnitOfWork(AppDbContext context) 
         {
             _context = context;
-            _artistsRepository = new(() => new EfRepository<Artist>(context));
-            _songsRepository = new(() => new EfRepository<Song>(context));
+            _artistsRepository = new(() => new EfRepository<Artist>(_context));
+            _songsRepository = new(() => new EfRepository<Song>(_context));
         }
 
         public IRepository<Song> SongsRepository => _songsRepository.Value;

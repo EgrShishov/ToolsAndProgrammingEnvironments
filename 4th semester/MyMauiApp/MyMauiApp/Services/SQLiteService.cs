@@ -24,7 +24,7 @@ namespace MyMauiApp.Services
         public void Init()
         {
             if (database != null) return;
-            database = new SQLiteConnection("D:\\ISP\\4th semester\\MyMauiApp\\DataBaseTest.db");
+            database = new SQLiteConnection(Path.Combine(FileSystem.Current.AppDataDirectory,"DataBaseTest.db"));
 
             //temporary
             database.DropTable<Book>();

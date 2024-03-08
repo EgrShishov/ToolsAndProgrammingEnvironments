@@ -5,6 +5,7 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:entities="clr-namespace:LabRab5App.Domain.Entities;assembly=LabRab5App.Domain"
              xmlns:converter="clr-namespace:LabRab5App.ValueConverters"
+             xmlns:icons="clr-namespace:LabRab5App.Models"
              x:Class="LabRab5App.Pages.ArtistsPage"
              x:DataType="models:ArtistsViewModel"
              Title="ArtistsPage">
@@ -24,8 +25,14 @@
 
     <ContentPage.MenuBarItems>
         <MenuBarItem Text="Меню">
-            <MenuFlyoutItem Text="Добавить исполнителя" Command="{Binding AddNewArtistCommand}"/>
-            <MenuFlyoutItem Text="Добавить песню" Command="{Binding AddNewSongCommand}" IsEnabled="{Binding SelectedArtist, Converter={converter:IsNotNull}}"/>
+            <MenuFlyoutItem Text="Добавить исполнителя" 
+                            IconImageSource="{FontImage FontFamily=fontawesome, Color=Black, Size=16, Glyph={x:Static icons:Icons.SquarePlus}}" 
+                            Command="{Binding AddNewArtistCommand}">
+            </MenuFlyoutItem>
+            <MenuFlyoutItem Text="Добавить песню" 
+                            IconImageSource="{FontImage FontFamily=fontawesome, Color=Black, Size=16, Glyph={x:Static icons:Icons.SquarePlus}}"
+                            Command="{Binding AddNewSongCommand}" 
+                            IsEnabled="{Binding SelectedArtist, Converter={converter:IsNotNull}}"/>
         </MenuBarItem>
     </ContentPage.MenuBarItems>
 
@@ -71,7 +78,7 @@
             </CollectionView.Header>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="entities:Song">
-                    <Frame BorderColor="CornflowerBlue" CornerRadius="10" HasShadow="True" BackgroundColor="Azure" Margin="10, 0, 10, 10">
+                    <Frame CornerRadius="10" HasShadow="True" BackgroundColor="Azure" Margin="10, 0, 10, 10" BorderColor="{Binding ChartPosition, Converter={StaticResource ChartToColor}}">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer
                                         Command="{Binding Source={RelativeSource 
@@ -82,7 +89,7 @@
                         <Grid RowDefinitions="*,*" ColumnDefinitions="*,*" ColumnSpacing="20" MaximumHeightRequest="100">
                             <Image Source="{Binding Id, Converter={StaticResource GetImageId}}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0"/>
                             <Label Grid.Row="0" Grid.Column="1" Text="{Binding Title, StringFormat='Название песни: {0}'}" FontSize="18" FontAttributes="Bold"/>
-                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Genre, StringFormat='Жанр: {0}'}" FontSize="16"/>
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding ChartPosition, StringFormat='Позиция в чартах: {0}'}" FontSize="16"/>
                         </Grid>
                     </Frame>
                 </DataTemplate>
