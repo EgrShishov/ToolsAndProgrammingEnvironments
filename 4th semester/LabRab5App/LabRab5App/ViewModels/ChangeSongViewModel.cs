@@ -19,7 +19,14 @@ namespace LabRab5App.ViewModels
 
         [ObservableProperty]
         Song song;
-
+        [ObservableProperty]
+        string title;
+        [ObservableProperty]
+        string genre;
+        [ObservableProperty]
+        double length;
+        [ObservableProperty]
+        int chartPosition;
         [ObservableProperty]
         int selectedIndex;
 
@@ -33,6 +40,10 @@ namespace LabRab5App.ViewModels
                 {
                     Artists.Add(artist);
                 }
+                Title = Song.Title;
+                Genre = Song.Genre;
+                Length = Song.Length;
+                ChartPosition = Song.ChartPosition;
             });
         }
 
@@ -48,19 +59,20 @@ namespace LabRab5App.ViewModels
         [RelayCommand]
         public async void EditSong()
         {
-            await _mediator.Send(new ChangeSongsInfoCommand(song));
-            await Shell.Current.GoToAsync("../..");
+            Song.ChangeSong(new Song(Title, ChartPosition, Genre, Length));
+            await _mediator.Send(new ChangeSongsInfoCommand(Song));
+            await Shell.Current.GoToAsync("../..", true);
         }
 
         [RelayCommand]
         public async Task ChangeGroup()
         {
-            if (selectedIndex == -1) return;
-            song.DeleteFromArtist();
-            song.AddToArtist(selectedIndex + 1);
-            await _mediator.Send(new ChangeSongsInfoCommand(song));
+            if (SelectedIndex == -1) return;
+            Song.DeleteFromArtist();
+            Song.AddToArtist(SelectedIndex + 1);
+            await _mediator.Send(new ChangeSongsInfoCommand(Song));
             await Shell.Current.GoToAsync("../..");
         }
-
+          
     }
 }

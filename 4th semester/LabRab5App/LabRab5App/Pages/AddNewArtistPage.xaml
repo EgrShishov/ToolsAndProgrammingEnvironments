@@ -5,24 +5,57 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:entities="clr-namespace:LabRab5App.Domain.Entities;assembly=LabRab5App.Domain"
              xmlns:converter="clr-namespace:LabRab5App.ValueConverters"
+             xmlns:local="clr-namespace:LabRab5App.Resources.Styles"
              x:Class="LabRab5App.Pages.AddNewArtistPage"
              x:DataType="models:AddNewArtistViewModel"
              Title="Adding new artist">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <local:ValidationStyles />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <Grid ColumnDefinitions="*" RowDefinitions="*">
         <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Azure" CornerRadius="5" Grid.Row="0" Grid.Column="0">
             <StackLayout Spacing="20" Padding="15">
                 <VerticalStackLayout>
                     <Label Text="Имя артиста: " VerticalOptions="Center"/>
-                    <Entry Text="{Binding Name}" x:Name="name_entry" Placeholder="Введите имя" MinimumWidthRequest="150"/>
+                    <Entry Text="{Binding Name}" x:Name="name_entry" Placeholder="Введите имя" MinimumWidthRequest="150">
+                        <Entry.Behaviors>
+                            <toolkit:TextValidationBehavior                                 
+                                InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                ValidStyle="{DynamicResource ValidEntryStyle}"
+                                RegexPattern = "[A-Za-z -]+">
+                            </toolkit:TextValidationBehavior>
+                        </Entry.Behaviors>
+                    </Entry>
                 </VerticalStackLayout>
                 <VerticalStackLayout>
                     <Label Text="Страна: " VerticalOptions="Center"/>
-                    <Entry Text="{Binding Country}" x:Name="country_entry" Placeholder="Введите страну исполнителя" MinimumWidthRequest="150"/>
+                    <Entry Text="{Binding Country}" x:Name="country_entry" Placeholder="Введите страну исполнителя" MinimumWidthRequest="150">
+                        <Entry.Behaviors>
+                            <toolkit:TextValidationBehavior                                 
+                                InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                ValidStyle="{DynamicResource ValidEntryStyle}"
+                                RegexPattern = "[A-Za-z -]+">
+                            </toolkit:TextValidationBehavior>
+                        </Entry.Behaviors>
+                    </Entry>
                 </VerticalStackLayout>
                 <VerticalStackLayout>
                     <Label Text="Дата рождения: " VerticalOptions="Center"/>
-                    <Entry Text="{Binding Birth, StringFormat='{0:dd/MM/yyyy}'}" x:Name="birth_entry" Placeholder="Введите дату рождения" MinimumWidthRequest="150"/>
+                    <Entry Text="{Binding Birth, StringFormat='{0:dd/MM/yyyy}'}" x:Name="birth_entry" Placeholder="Введите дату рождения" MinimumWidthRequest="150">
+                        <Entry.Behaviors>
+                            <toolkit:TextValidationBehavior                                 
+                                InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                ValidStyle="{DynamicResource ValidEntryStyle}"
+                                RegexPattern = "\d{2}.\d{2}.\d{4}">
+                            </toolkit:TextValidationBehavior>
+                        </Entry.Behaviors>
+                    </Entry>
                 </VerticalStackLayout>
                 <HorizontalStackLayout Spacing="20">
                     <Button x:Name="add_btn" Text="Добавить" Command="{Binding AddArtistCommand}" MinimumWidthRequest="200" BackgroundColor="Green"/>

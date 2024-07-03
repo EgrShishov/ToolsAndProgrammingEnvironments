@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using LabRab5App.Application.SongUseCase.Commands;
 using System.ComponentModel;
+using System.Diagnostics;
 
 namespace LabRab5App.ViewModels
 {
@@ -35,6 +36,11 @@ namespace LabRab5App.ViewModels
         [ObservableProperty]
         int chartPos;
 
+        [RelayCommand]
+        public async Task Cancel()
+        {
+            await Shell.Current.GoToAsync("..");
+        }
 
         [RelayCommand]
         public async Task AddSong()
@@ -44,44 +50,25 @@ namespace LabRab5App.ViewModels
                 || genre == string.Empty
                 || length == 0.0
                 || chartPos == 0) return;
-            await _mediator.Send(new AddSongCommand(title, genre, chartPos, length, selectedArtist.Id));
-            await Shell.Current.GoToAsync("..");
-        }
-
-        [RelayCommand]
-        public async Task Cancel()
-        {
-            await Shell.Current.GoToAsync("..");
-        }
-
-        [RelayCommand]
-        public async Task ChangeSong()
-        {
-            if (selectedArtist is null
-                || title == string.Empty
-                || genre == string.Empty
-                || length == 0.0
-                || chartPos == 0) return;
 
             var newSong = new Song(title, chartPos, genre, length);
-            newSong.AddToArtist(selectedArtist.Id);
-
-            if(image != null)
+            newSong.AddToArtist(SelectedArtist.Id);
+            var that_song = await _mediator.Send(new ChangeSongsInfoCommand(newSong));
+            if (Image != null)
             {
-                using var stream = await image.OpenReadAsync();
+                using var stream = await Image.OpenReadAsync();
                 var dirPath = Path.Combine(FileSystem.Current.AppDataDirectory, "Images");
                 if (!Directory.Exists(dirPath))
                 {
                     Directory.CreateDirectory(dirPath);
                 }
-                var filename = Path.Combine(dirPath, $"{newSong.Id}.png");
+                var filename = Path.Combine(dirPath, $"{that_song.Id}.png");
                 using var fstream = File.Create(filename);
+                Trace.WriteLine(filename);
                 stream.Seek(0, SeekOrigin.Begin);
                 stream.CopyTo(fstream);
                 stream.Seek(0, SeekOrigin.Begin);
             }
-
-            await _mediator.Send(new ChangeSongsInfoCommand(newSong));
             await Shell.Current.GoToAsync("..");
             return;
         }

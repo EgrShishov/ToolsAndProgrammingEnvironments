@@ -34,25 +34,15 @@ namespace LabRab5App.Domain.Entities
             ArtistId = 0;
         }
 
-        public void ChangeChartPosition(int newPosition)
+        public void ChangeSong(Song changedSong)
         {
-            if (newPosition <= 0) return;
-            ChartPosition = newPosition;
-        }
+            if (changedSong.ChartPosition < 0 || changedSong.Length < 0 
+                || changedSong.Genre == string.Empty || changedSong.Title == string.Empty) return;
 
-        public void ChangeTitle(string newTitle)
-        {
-            Title = newTitle;
-        }
-
-        public void ChangeGenre(string newGenre)
-        {
-            Genre = newGenre;
-        }
-
-        public void ChangeLength(double newLength)
-        {
-            Length = newLength;
+            Title = changedSong.Title;
+            Genre = changedSong.Genre;
+            Length = changedSong.Length;
+            ChartPosition = changedSong.ChartPosition;
         }
     }
 }

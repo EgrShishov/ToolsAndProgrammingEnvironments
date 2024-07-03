@@ -19,7 +19,7 @@ namespace LabRab5App.Domain.Entities
         }
 
         public IEnumerable<Song> Songs { get => _songs.AsReadOnly(); }
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         public DateTime BirthDate { get; private set; }
 

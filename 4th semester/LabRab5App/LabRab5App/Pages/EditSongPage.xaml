@@ -13,7 +13,7 @@
         <toolkit:EventToCommandBehavior EventName="Loaded"
                                         Command="{Binding SetPickerSourcesCommand}"/>
     </ContentPage.Behaviors>
-    
+
     <Grid RowDefinitions="*" ColumnDefinitions="*" VerticalOptions="Center" HorizontalOptions="Center"> 
         <Frame Grid.Row="0" Grid.Column="0" CornerRadius="5" BackgroundColor="LightBlue" Margin="10">
             <Grid RowDefinitions="5*,*,*,*,*,2*" 
@@ -24,16 +24,16 @@
                   RowSpacing="5">
                 
                 <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" MinimumHeightRequest="200"  MinimumWidthRequest="200" Source="{Binding Song.Id, Converter={converter:IdToImageSourceConverter}}"/>
-                <Entry Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding Song.Title}" FontSize="20" FontAttributes="Bold"/>
+                <Entry Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding Title}" FontSize="20" FontAttributes="Bold"/>
                 
                 <Label Grid.Row="1" Grid.Column="0" Text="Жанр: " FontSize="12"/>
-                <Entry Grid.Row="2" Grid.Column="0" Text="{Binding Song.Genre}" FontSize="14"/>
+                <Entry Grid.Row="2" Grid.Column="0" Text="{Binding Genre}" FontSize="14"/>
                 
                 <Label Grid.Row="3" Grid.Column="0" Text="Позиция в чартах: "/>
-                <Entry Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Song.ChartPosition}" FontSize="12"/>
+                <Entry Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding ChartPosition}" FontSize="12"/>
                 
                 <Label Grid.Row="3" Grid.Column="2"  Text="Продолжительность: " FontSize="12"/>
-                <Entry Grid.Row="4" Grid.Column="2"  Text="{Binding Song.Length}" FontSize="12"/>
+                <Entry Grid.Row="4" Grid.Column="2"  Text="{Binding Length}" FontSize="12"/>
                 
                 <Button Grid.Row="5" Grid.Column="0" Text="Изменить" Command="{Binding EditSongCommand}" MinimumWidthRequest="200" BackgroundColor="Green"/>
                 <Button Grid.Row="5" Grid.Column="4" Text="Отмена" Command="{Binding CancelCommand}" MinimumWidthRequest="200" BackgroundColor="Red"/>

@@ -12,6 +12,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:IsNotNull x:Key="IsNotNull"/>
+            <converter:IsNull x:Key="IsNull"/>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -19,8 +20,9 @@
         <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Azure" CornerRadius="5" Grid.Row="0" Grid.Column="0">
             <StackLayout Spacing="20" Padding="15">
                 <HorizontalStackLayout Spacing="20">
+                    <Image Source="{Binding Image.FullPath}" MaximumWidthRequest="200" MaximumHeightRequest="200"/>
                     <Label Text="Выберите фото обложки" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Button x:Name="addphoto_btn" Text="Добавить фото" Command="{Binding PickPhotoCommand}" BackgroundColor="RoyalBlue" HorizontalOptions="End" IsEnabled="{Binding Image, Converter={StaticResource !IsNotNull}}"/>
+                    <Button x:Name="addphoto_btn" Text="Добавить фото" Command="{Binding PickPhotoCommand}" BackgroundColor="RoyalBlue" HorizontalOptions="End"/>
                 </HorizontalStackLayout>
                 <VerticalStackLayout>
                     <Label Text="Название композиции: " VerticalOptions="Center"/>
@@ -38,7 +40,7 @@
                     <Label Text="Длина: " VerticalOptions="Center"/>
                     <Entry Text="{Binding Length}" x:Name="len_entry" Placeholder="Введите продолжительность" MinimumWidthRequest="150"/>
                 </VerticalStackLayout>
-                <HorizontalStackLayout Spacing="20">
+                <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
                     <Button x:Name="add_btn" Text="Добавить" Command="{Binding AddSongCommand}" MinimumWidthRequest="200" BackgroundColor="Green"/>
                     <Button x:Name="cancel_btn" Text="Отмена" Command="{Binding CancelCommand}" MinimumWidthRequest="200" BackgroundColor="Red"/>
                 </HorizontalStackLayout>

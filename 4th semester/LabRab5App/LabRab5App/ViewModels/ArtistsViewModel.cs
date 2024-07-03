@@ -70,13 +70,21 @@ namespace LabRab5App.ViewModels
 
         private async Task GoToAddNewSongPage(Artist selectedArtist)
         {
-            if (selectedArtist is not null)
+            try
             {
-                IDictionary<string, object> parametrs = new Dictionary<string, object>()
+                if (selectedArtist is not null)
+                {
+                    IDictionary<string, object> parametrs = new Dictionary<string, object>()
             {
                 {"SelectedArtist", selectedArtist}
             };
-                await Shell.Current.GoToAsync(nameof(AddNewSongPage), parametrs);
+                    await Shell.Current.GoToAsync(nameof(AddNewSongPage), parametrs);
+                }
+            }
+            catch(Exception ex)
+            {
+                SelectedArtist.Name = ex.Message;
+                Trace.WriteLine(ex.Message);
             }
         }
 
